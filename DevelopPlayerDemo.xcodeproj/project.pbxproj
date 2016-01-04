@@ -7,15 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		883CB9B31C3A7935004D37C6 /* UIImage+PKShortVideoPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 883CB9B21C3A7935004D37C6 /* UIImage+PKShortVideoPlayer.m */; };
 		88DDEC341C3A568F00FA04E4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 88DDEC331C3A568F00FA04E4 /* main.m */; };
 		88DDEC371C3A568F00FA04E4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 88DDEC361C3A568F00FA04E4 /* AppDelegate.m */; };
 		88DDEC3A1C3A568F00FA04E4 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88DDEC391C3A568F00FA04E4 /* ViewController.m */; };
 		88DDEC3D1C3A568F00FA04E4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88DDEC3B1C3A568F00FA04E4 /* Main.storyboard */; };
 		88DDEC3F1C3A568F00FA04E4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 88DDEC3E1C3A568F00FA04E4 /* Assets.xcassets */; };
 		88DDEC421C3A568F00FA04E4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88DDEC401C3A568F00FA04E4 /* LaunchScreen.storyboard */; };
+		88DDEC4A1C3A576A00FA04E4 /* Cat.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 88DDEC491C3A576A00FA04E4 /* Cat.mp4 */; };
+		88DDEC501C3A5D2100FA04E4 /* AVAssetReaderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88DDEC4F1C3A5D2100FA04E4 /* AVAssetReaderViewController.m */; };
+		88DDEC531C3A63FB00FA04E4 /* PKFullScreenPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 88DDEC521C3A63FB00FA04E4 /* PKFullScreenPlayerView.m */; };
+		88DDEC571C3A673B00FA04E4 /* PKFullScreenPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88DDEC561C3A673B00FA04E4 /* PKFullScreenPlayerViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		883CB9B11C3A7935004D37C6 /* UIImage+PKShortVideoPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+PKShortVideoPlayer.h"; path = "PKShortVideoPlayer/Categories/UIImage+PKShortVideoPlayer.h"; sourceTree = "<group>"; };
+		883CB9B21C3A7935004D37C6 /* UIImage+PKShortVideoPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+PKShortVideoPlayer.m"; path = "PKShortVideoPlayer/Categories/UIImage+PKShortVideoPlayer.m"; sourceTree = "<group>"; };
 		88DDEC2F1C3A568F00FA04E4 /* DevelopPlayerDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DevelopPlayerDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		88DDEC331C3A568F00FA04E4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		88DDEC351C3A568F00FA04E4 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -26,6 +33,13 @@
 		88DDEC3E1C3A568F00FA04E4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		88DDEC411C3A568F00FA04E4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		88DDEC431C3A568F00FA04E4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		88DDEC491C3A576A00FA04E4 /* Cat.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = Cat.mp4; sourceTree = "<group>"; };
+		88DDEC4E1C3A5D2100FA04E4 /* AVAssetReaderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVAssetReaderViewController.h; sourceTree = "<group>"; };
+		88DDEC4F1C3A5D2100FA04E4 /* AVAssetReaderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVAssetReaderViewController.m; sourceTree = "<group>"; };
+		88DDEC511C3A63FB00FA04E4 /* PKFullScreenPlayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKFullScreenPlayerView.h; path = PKShortVideoPlayer/PKFullScreenPlayerView.h; sourceTree = "<group>"; };
+		88DDEC521C3A63FB00FA04E4 /* PKFullScreenPlayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PKFullScreenPlayerView.m; path = PKShortVideoPlayer/PKFullScreenPlayerView.m; sourceTree = "<group>"; };
+		88DDEC551C3A673B00FA04E4 /* PKFullScreenPlayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKFullScreenPlayerViewController.h; path = PKShortVideoPlayer/PKFullScreenPlayerViewController.h; sourceTree = "<group>"; };
+		88DDEC561C3A673B00FA04E4 /* PKFullScreenPlayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PKFullScreenPlayerViewController.m; path = PKShortVideoPlayer/PKFullScreenPlayerViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,6 +53,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		883CB9B01C3A7869004D37C6 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				883CB9B11C3A7935004D37C6 /* UIImage+PKShortVideoPlayer.h */,
+				883CB9B21C3A7935004D37C6 /* UIImage+PKShortVideoPlayer.m */,
+			);
+			name = Categories;
+			sourceTree = "<group>";
+		};
 		88DDEC261C3A568F00FA04E4 = {
 			isa = PBXGroup;
 			children = (
@@ -58,13 +81,17 @@
 		88DDEC311C3A568F00FA04E4 /* DevelopPlayerDemo */ = {
 			isa = PBXGroup;
 			children = (
+				88DDEC541C3A640000FA04E4 /* PKShortVideoPlayer */,
 				88DDEC351C3A568F00FA04E4 /* AppDelegate.h */,
 				88DDEC361C3A568F00FA04E4 /* AppDelegate.m */,
 				88DDEC381C3A568F00FA04E4 /* ViewController.h */,
 				88DDEC391C3A568F00FA04E4 /* ViewController.m */,
+				88DDEC4E1C3A5D2100FA04E4 /* AVAssetReaderViewController.h */,
+				88DDEC4F1C3A5D2100FA04E4 /* AVAssetReaderViewController.m */,
 				88DDEC3B1C3A568F00FA04E4 /* Main.storyboard */,
 				88DDEC3E1C3A568F00FA04E4 /* Assets.xcassets */,
 				88DDEC401C3A568F00FA04E4 /* LaunchScreen.storyboard */,
+				88DDEC491C3A576A00FA04E4 /* Cat.mp4 */,
 				88DDEC431C3A568F00FA04E4 /* Info.plist */,
 				88DDEC321C3A568F00FA04E4 /* Supporting Files */,
 			);
@@ -77,6 +104,18 @@
 				88DDEC331C3A568F00FA04E4 /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		88DDEC541C3A640000FA04E4 /* PKShortVideoPlayer */ = {
+			isa = PBXGroup;
+			children = (
+				883CB9B01C3A7869004D37C6 /* Categories */,
+				88DDEC511C3A63FB00FA04E4 /* PKFullScreenPlayerView.h */,
+				88DDEC521C3A63FB00FA04E4 /* PKFullScreenPlayerView.m */,
+				88DDEC551C3A673B00FA04E4 /* PKFullScreenPlayerViewController.h */,
+				88DDEC561C3A673B00FA04E4 /* PKFullScreenPlayerViewController.m */,
+			);
+			name = PKShortVideoPlayer;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,6 +177,7 @@
 			files = (
 				88DDEC421C3A568F00FA04E4 /* LaunchScreen.storyboard in Resources */,
 				88DDEC3F1C3A568F00FA04E4 /* Assets.xcassets in Resources */,
+				88DDEC4A1C3A576A00FA04E4 /* Cat.mp4 in Resources */,
 				88DDEC3D1C3A568F00FA04E4 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -149,9 +189,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				88DDEC571C3A673B00FA04E4 /* PKFullScreenPlayerViewController.m in Sources */,
 				88DDEC3A1C3A568F00FA04E4 /* ViewController.m in Sources */,
 				88DDEC371C3A568F00FA04E4 /* AppDelegate.m in Sources */,
+				883CB9B31C3A7935004D37C6 /* UIImage+PKShortVideoPlayer.m in Sources */,
+				88DDEC501C3A5D2100FA04E4 /* AVAssetReaderViewController.m in Sources */,
 				88DDEC341C3A568F00FA04E4 /* main.m in Sources */,
+				88DDEC531C3A63FB00FA04E4 /* PKFullScreenPlayerView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -298,6 +342,7 @@
 				88DDEC481C3A568F00FA04E4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

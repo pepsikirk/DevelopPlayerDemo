@@ -7,6 +7,8 @@
 //
 
 #import "ViewController.h"
+#import "PKFullScreenPlayerViewController.h"
+#import "UIImage+PKShortVideoPlayer.h"
 
 @interface ViewController ()
 
@@ -22,6 +24,17 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (IBAction)goToAVPlayer:(id)sender {
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"Cat" ofType:@"mp4"];
+
+    NSURL *URL = [[NSURL alloc] initWithString:path];
+    
+    [UIImage previewImageWithVideoURL:URL returnBlock:^(UIImage *image) {
+        PKFullScreenPlayerViewController *playerViewController = [[PKFullScreenPlayerViewController alloc] initWithVideoURL:URL previewImage:image];
+        [self.navigationController pushViewController:playerViewController animated:YES];
+    }];
 }
 
 @end
