@@ -23,16 +23,10 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor blackColor];
     
-    NSURL *URL =
-    
-    
     CGSize viewSize = self.view.bounds.size;
-    CGSize imageSize = image.size;
+    CGSize imageSize = self.image.size;
     
-    self.playerView = [[PKChatMessagePlayerView alloc] initWithFrame:CGRectMake(0, 0, viewSize.width, viewSize.width* (imageSize.height/imageSize.width) ) videoURL:URL previewImage:image];
-    self.playerView.center = self.view.center;
-    
-    [self.view addSubview:self.playerView];
+
 }
 
 - (void)viewWillAppear:(BOOL)animated {
