@@ -37,16 +37,23 @@
         
         AVURLAsset *asset = [AVURLAsset URLAssetWithURL:videoURL options:nil];
         
+        __weak typeof(self)weakSelf = self;
         [asset loadValuesAsynchronouslyForKeys:@[@"playable"] completionHandler:^{
             dispatch_async( dispatch_get_main_queue(), ^{
-                [self prepareToPlayAsset:asset];
+                [weakSelf prepareToPlayAsset:asset];
             });
-         }];
+        }];
     }
     return self;
 }
 
 - (void)dealloc {
+    [_player pause];
+    [_player.currentItem cancelPendingSeeks];
+    [_player.currentItem.asset cancelLoading];
+    [_player replaceCurrentItemWithPlayerItem:nil];
+    _player = nil;
+    
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
@@ -63,28 +70,32 @@
     }
     
     if (!asset.playable) {
-        error = [NSError errorWithDomain:@"StitchedStreamPlayer" code:0 userInfo:nil];
-        [self assetFailedToPrepareForPlayback:error];
+        NSError *assetCannotBePlayedError = [NSError errorWithDomain:@"Item cannot be played" code:0 userInfo:nil];
+        
+        [self assetFailedToPrepareForPlayback:assetCannotBePlayedError];
         return;
     }
     
     AVPlayerItem *playerItem = [AVPlayerItem playerItemWithAsset:asset];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(playerItemDidReachEnd:) name:AVPlayerItemDidPlayToEndTimeNotification object:playerItem];
     
-    _player = [AVPlayer playerWithPlayerItem:playerItem];
+    self.player = [AVPlayer playerWithPlayerItem:playerItem];
     
-    _playerLayer = [AVPlayerLayer playerLayerWithPlayer:_player];
-    _playerLayer.frame = self.frame;
-    _playerLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
+    self.playerLayer = [AVPlayerLayer playerLayerWithPlayer:self.player];
+    self.playerLayer.frame = self.bounds;
+    self.playerLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
     [self.layer addSublayer:_playerLayer];
+    
+    [self.player play];
 }
 
 
 
-#pragma mark Error Handling - Preparing Assets for Playback Failed
+#pragma mark - Error Handle
 
--(void)assetFailedToPrepareForPlayback:(NSError *)error {
-    
+- (void)assetFailedToPrepareForPlayback:(NSError *)error {
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Video cannot be played" message:@"Video cannot be played" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [alertView show];
 }
 
 
@@ -95,6 +106,24 @@
     [self.player seekToTime:kCMTimeZero];
     
     [self.player play];
+}
+
+
+
+#pragma mark - Public
+
+- (void)play {
+    if (!self.player) {
+        return;
+    }
+    [self.player play];
+}
+
+- (void)pause {
+    if (!self.player) {
+        return;
+    }
+    [self.player pause];
 }
 
 

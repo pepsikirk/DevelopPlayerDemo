@@ -10,4 +10,7 @@
 
 @interface AVAssetReaderViewController : UIViewController
 
+@property (nonatomic, strong) NSURL *URL;
+@property (nonatomic, strong) UIImage *image;
+
 @end

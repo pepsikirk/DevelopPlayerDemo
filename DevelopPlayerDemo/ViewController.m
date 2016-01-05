@@ -9,8 +9,12 @@
 #import "ViewController.h"
 #import "PKFullScreenPlayerViewController.h"
 #import "UIImage+PKShortVideoPlayer.h"
+#import "AVAssetReaderViewController.h"
 
 @interface ViewController ()
+
+@property (nonatomic, strong) NSURL *URL;
+@property (nonatomic, strong) UIImage *image;
 
 @end
 
@@ -19,6 +23,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    self.URL = [[NSBundle mainBundle] URLForResource:@"Cat" withExtension:@"mp4"];
+    
+    self.image = [UIImage previewImageWithVideoURL:self.URL];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -27,14 +34,31 @@
 }
 
 - (IBAction)goToAVPlayer:(id)sender {
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"Cat" ofType:@"mp4"];
-
-    NSURL *URL = [[NSURL alloc] initWithString:path];
+    if (!self.image) {
+        return;
+    }
     
-    [UIImage previewImageWithVideoURL:URL returnBlock:^(UIImage *image) {
-        PKFullScreenPlayerViewController *playerViewController = [[PKFullScreenPlayerViewController alloc] initWithVideoURL:URL previewImage:image];
-        [self.navigationController pushViewController:playerViewController animated:YES];
-    }];
+    PKFullScreenPlayerViewController *playerViewController = [[PKFullScreenPlayerViewController alloc] initWithVideoURL:self.URL previewImage:self.image];
+    
+    CATransition *animation = [CATransition animation];
+    [animation setDuration:0.25];
+    [animation setType: kCATransitionFade];
+    
+    [animation setSubtype: kCATransitionFromLeft];
+    [animation setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear]];
+    
+    [self.navigationController.view.layer addAnimation:animation forKey:nil];
+    [self.navigationController pushViewController:playerViewController animated:NO];
+}
+
+#pragma mark - Segue
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"segueAVAssetReader"]) {
+        AVAssetReaderViewController *vc = segue.destinationViewController;
+        vc.URL = self.URL;
+        vc.image = self.image;
+    }
 }
 
 @end

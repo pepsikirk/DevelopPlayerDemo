@@ -14,6 +14,7 @@
 @property (nonatomic, strong) PKFullScreenPlayerView *playerView;
 
 @property (nonatomic, strong) NSURL *videoURL;
+@property (nonatomic, strong) UIImage *image;
 
 @end
 
@@ -28,26 +29,65 @@
     self = [super init];
     if (self) {
         _videoURL = videoURL;
-        
-        CGSize viewSize = self.view.bounds.size;
-        CGSize imageSize = previewImage.size;
-        _playerView = [[PKFullScreenPlayerView alloc] initWithFrame:CGRectMake(0, 0, viewSize.width, viewSize.width* (imageSize.height/imageSize.width) ) videoURL:videoURL previewImage:previewImage];
-        [self.view addSubview:_playerView];
-        _playerView.center = self.view.center;
+        _image = previewImage;
     }
     return self;
+}
+
+- (void)dealloc {
+    _playerView = nil;
 }
 
 #pragma mark - View Lifecycle
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.view.backgroundColor = [UIColor blackColor];
+    
+    CGSize viewSize = self.view.bounds.size;
+    CGSize imageSize = self.image.size;
+    
+    self.playerView = [[PKFullScreenPlayerView alloc] initWithFrame:CGRectMake(0, 0, viewSize.width, viewSize.width* (imageSize.height/imageSize.width) ) videoURL:self.videoURL previewImage:self.image];
+    self.playerView.center = self.view.center;
+    
+    [self.view addSubview:self.playerView];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    [self.navigationController setNavigationBarHidden:YES animated:YES];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
+}
+
+- (BOOL)prefersStatusBarHidden {
+    return YES;
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
 
+#pragma mark - UIResponder
 
+- (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    [super touchesEnded:touches withEvent:event];
+    
+    CATransition *animation = [CATransition animation];
+    [animation setDuration:0.25];
+    [animation setType: kCATransitionFade];
+    
+    [animation setSubtype: kCATransitionFromLeft];
+    [animation setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear]];
+    
+    [self.navigationController.view.layer addAnimation:animation forKey:nil];
+    
+    [self.navigationController popViewControllerAnimated:NO];
+}
 
 @end

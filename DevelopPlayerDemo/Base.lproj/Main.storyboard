@@ -21,7 +21,7 @@
                                 <rect key="frame" x="8" y="349" width="304" height="30"/>
                                 <state key="normal" title="AVAssetReader+AVAssetReaderTrackOutput"/>
                                 <connections>
-                                    <segue destination="cMu-rJ-VxI" kind="push" id="c7i-ax-um6"/>
+                                    <segue destination="cMu-rJ-VxI" kind="push" identifier="segueAVAssetReader" id="c7i-ax-um6"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MfN-14-YnW">

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		883CB9B31C3A7935004D37C6 /* UIImage+PKShortVideoPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 883CB9B21C3A7935004D37C6 /* UIImage+PKShortVideoPlayer.m */; };
+		886975FD1C3B6E0500653EB9 /* PKChatMessagePlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 886975FC1C3B6E0500653EB9 /* PKChatMessagePlayerView.m */; };
 		88DDEC341C3A568F00FA04E4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 88DDEC331C3A568F00FA04E4 /* main.m */; };
 		88DDEC371C3A568F00FA04E4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 88DDEC361C3A568F00FA04E4 /* AppDelegate.m */; };
 		88DDEC3A1C3A568F00FA04E4 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88DDEC391C3A568F00FA04E4 /* ViewController.m */; };
@@ -23,6 +24,8 @@
 /* Begin PBXFileReference section */
 		883CB9B11C3A7935004D37C6 /* UIImage+PKShortVideoPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+PKShortVideoPlayer.h"; path = "PKShortVideoPlayer/Categories/UIImage+PKShortVideoPlayer.h"; sourceTree = "<group>"; };
 		883CB9B21C3A7935004D37C6 /* UIImage+PKShortVideoPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+PKShortVideoPlayer.m"; path = "PKShortVideoPlayer/Categories/UIImage+PKShortVideoPlayer.m"; sourceTree = "<group>"; };
+		886975FB1C3B6E0500653EB9 /* PKChatMessagePlayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKChatMessagePlayerView.h; path = PKShortVideoPlayer/PKChatMessagePlayerView.h; sourceTree = "<group>"; };
+		886975FC1C3B6E0500653EB9 /* PKChatMessagePlayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PKChatMessagePlayerView.m; path = PKShortVideoPlayer/PKChatMessagePlayerView.m; sourceTree = "<group>"; };
 		88DDEC2F1C3A568F00FA04E4 /* DevelopPlayerDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DevelopPlayerDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		88DDEC331C3A568F00FA04E4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		88DDEC351C3A568F00FA04E4 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -82,12 +85,12 @@
 			isa = PBXGroup;
 			children = (
 				88DDEC541C3A640000FA04E4 /* PKShortVideoPlayer */,
-				88DDEC351C3A568F00FA04E4 /* AppDelegate.h */,
-				88DDEC361C3A568F00FA04E4 /* AppDelegate.m */,
 				88DDEC381C3A568F00FA04E4 /* ViewController.h */,
 				88DDEC391C3A568F00FA04E4 /* ViewController.m */,
 				88DDEC4E1C3A5D2100FA04E4 /* AVAssetReaderViewController.h */,
 				88DDEC4F1C3A5D2100FA04E4 /* AVAssetReaderViewController.m */,
+				88DDEC351C3A568F00FA04E4 /* AppDelegate.h */,
+				88DDEC361C3A568F00FA04E4 /* AppDelegate.m */,
 				88DDEC3B1C3A568F00FA04E4 /* Main.storyboard */,
 				88DDEC3E1C3A568F00FA04E4 /* Assets.xcassets */,
 				88DDEC401C3A568F00FA04E4 /* LaunchScreen.storyboard */,
@@ -110,6 +113,8 @@
 			isa = PBXGroup;
 			children = (
 				883CB9B01C3A7869004D37C6 /* Categories */,
+				886975FB1C3B6E0500653EB9 /* PKChatMessagePlayerView.h */,
+				886975FC1C3B6E0500653EB9 /* PKChatMessagePlayerView.m */,
 				88DDEC511C3A63FB00FA04E4 /* PKFullScreenPlayerView.h */,
 				88DDEC521C3A63FB00FA04E4 /* PKFullScreenPlayerView.m */,
 				88DDEC551C3A673B00FA04E4 /* PKFullScreenPlayerViewController.h */,
@@ -193,6 +198,7 @@
 				88DDEC3A1C3A568F00FA04E4 /* ViewController.m in Sources */,
 				88DDEC371C3A568F00FA04E4 /* AppDelegate.m in Sources */,
 				883CB9B31C3A7935004D37C6 /* UIImage+PKShortVideoPlayer.m in Sources */,
+				886975FD1C3B6E0500653EB9 /* PKChatMessagePlayerView.m in Sources */,
 				88DDEC501C3A5D2100FA04E4 /* AVAssetReaderViewController.m in Sources */,
 				88DDEC341C3A568F00FA04E4 /* main.m in Sources */,
 				88DDEC531C3A63FB00FA04E4 /* PKFullScreenPlayerView.m in Sources */,
@@ -257,7 +263,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -294,7 +300,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;

@@ -12,4 +12,8 @@
 
 - (instancetype)initWithFrame:(CGRect)frame videoURL:(NSURL *)videoURL previewImage:(UIImage *)previewImage;
 
+- (void)play;
+
+- (void)pause;
+
 @end
