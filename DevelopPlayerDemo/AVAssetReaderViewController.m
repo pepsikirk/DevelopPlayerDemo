@@ -25,8 +25,6 @@
     
     CGSize viewSize = self.view.bounds.size;
     CGSize imageSize = self.image.size;
-    
-
 }
 
 - (void)viewWillAppear:(BOOL)animated {
