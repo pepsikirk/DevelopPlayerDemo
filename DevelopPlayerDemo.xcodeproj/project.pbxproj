@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		883CB9B31C3A7935004D37C6 /* UIImage+PKShortVideoPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 883CB9B21C3A7935004D37C6 /* UIImage+PKShortVideoPlayer.m */; };
 		886975FD1C3B6E0500653EB9 /* PKChatMessagePlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 886975FC1C3B6E0500653EB9 /* PKChatMessagePlayerView.m */; };
+		886975FF1C3BAA9600653EB9 /* demo.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 886975FE1C3BAA9600653EB9 /* demo.mp4 */; };
 		88DDEC341C3A568F00FA04E4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 88DDEC331C3A568F00FA04E4 /* main.m */; };
 		88DDEC371C3A568F00FA04E4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 88DDEC361C3A568F00FA04E4 /* AppDelegate.m */; };
 		88DDEC3A1C3A568F00FA04E4 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88DDEC391C3A568F00FA04E4 /* ViewController.m */; };
@@ -26,6 +27,7 @@
 		883CB9B21C3A7935004D37C6 /* UIImage+PKShortVideoPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+PKShortVideoPlayer.m"; path = "PKShortVideoPlayer/Categories/UIImage+PKShortVideoPlayer.m"; sourceTree = "<group>"; };
 		886975FB1C3B6E0500653EB9 /* PKChatMessagePlayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKChatMessagePlayerView.h; path = PKShortVideoPlayer/PKChatMessagePlayerView.h; sourceTree = "<group>"; };
 		886975FC1C3B6E0500653EB9 /* PKChatMessagePlayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PKChatMessagePlayerView.m; path = PKShortVideoPlayer/PKChatMessagePlayerView.m; sourceTree = "<group>"; };
+		886975FE1C3BAA9600653EB9 /* demo.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = demo.mp4; sourceTree = "<group>"; };
 		88DDEC2F1C3A568F00FA04E4 /* DevelopPlayerDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DevelopPlayerDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		88DDEC331C3A568F00FA04E4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		88DDEC351C3A568F00FA04E4 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -95,6 +97,7 @@
 				88DDEC3E1C3A568F00FA04E4 /* Assets.xcassets */,
 				88DDEC401C3A568F00FA04E4 /* LaunchScreen.storyboard */,
 				88DDEC491C3A576A00FA04E4 /* Cat.mp4 */,
+				886975FE1C3BAA9600653EB9 /* demo.mp4 */,
 				88DDEC431C3A568F00FA04E4 /* Info.plist */,
 				88DDEC321C3A568F00FA04E4 /* Supporting Files */,
 			);
@@ -183,6 +186,7 @@
 				88DDEC421C3A568F00FA04E4 /* LaunchScreen.storyboard in Resources */,
 				88DDEC3F1C3A568F00FA04E4 /* Assets.xcassets in Resources */,
 				88DDEC4A1C3A576A00FA04E4 /* Cat.mp4 in Resources */,
+				886975FF1C3BAA9600653EB9 /* demo.mp4 in Resources */,
 				88DDEC3D1C3A568F00FA04E4 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

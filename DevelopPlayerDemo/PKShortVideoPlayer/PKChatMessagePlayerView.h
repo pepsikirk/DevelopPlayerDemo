@@ -8,6 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface PKChatMessagePlayerView : UIView
 
+- (instancetype)initWithFrame:(CGRect)frame videoURL:(NSURL *)videoURL previewImage:(UIImage *)previewImage;
+
 @end
+
+NS_ASSUME_NONNULL_END

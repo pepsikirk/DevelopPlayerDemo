@@ -35,7 +35,7 @@
         _videoURL = videoURL;
         _previewImage = previewImage;
         
-        AVURLAsset *asset = [AVURLAsset URLAssetWithURL:videoURL options:nil];
+        AVAsset *asset = [AVAsset assetWithURL:videoURL];
         
         __weak typeof(self)weakSelf = self;
         [asset loadValuesAsynchronouslyForKeys:@[@"playable"] completionHandler:^{
@@ -61,7 +61,7 @@
 
 #pragma mark Prepare to play asset, URL
 
-- (void)prepareToPlayAsset:(AVURLAsset *)asset {
+- (void)prepareToPlayAsset:(AVAsset *)asset {
     NSError *error = nil;
     AVKeyValueStatus keyStatus = [asset statusOfValueForKey:@"playable" error:&error];
     if (keyStatus == AVKeyValueStatusFailed) {

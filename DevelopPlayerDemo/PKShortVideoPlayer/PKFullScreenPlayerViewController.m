@@ -34,9 +34,7 @@
     return self;
 }
 
-- (void)dealloc {
-    _playerView = nil;
-}
+
 
 #pragma mark - View Lifecycle
 
@@ -51,6 +49,9 @@
     self.playerView.center = self.view.center;
     
     [self.view addSubview:self.playerView];
+    
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapGestureRecognizer:)];
+    [self.view addGestureRecognizer:tap];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -73,10 +74,12 @@
     [super didReceiveMemoryWarning];
 }
 
-#pragma mark - UIResponder
 
-- (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-    [super touchesEnded:touches withEvent:event];
+
+#pragma mark - Tap GestureRecognizer
+
+- (void)tapGestureRecognizer:(UITapGestureRecognizer *)tap {
+    [self.playerView pause];
     
     CATransition *animation = [CATransition animation];
     [animation setDuration:0.25];

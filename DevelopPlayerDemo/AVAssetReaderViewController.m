@@ -22,25 +22,22 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor blackColor];
-    
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
     CGSize viewSize = self.view.bounds.size;
     CGSize imageSize = self.image.size;
-}
-
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
     
-    [self.navigationController setNavigationBarHidden:YES animated:YES];
-}
-
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
+    self.playerView = [[PKChatMessagePlayerView alloc] initWithFrame:CGRectMake(0, 0, viewSize.width, viewSize.width* (imageSize.height/imageSize.width) ) videoURL:self.URL previewImage:self.image];
+    self.playerView.center = self.view.center;
     
-    [self.navigationController setNavigationBarHidden:NO animated:YES];
+    [self.view addSubview:self.playerView];
 }
 
-- (BOOL)prefersStatusBarHidden {
-    return YES;
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
 }
 
 @end
