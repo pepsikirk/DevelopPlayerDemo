@@ -8,8 +8,9 @@
 
 #import "PKChatMessagePlayerView.h"
 @import AVFoundation;
+#import "PKVideoDecoder.h"
 
-@interface PKChatMessagePlayerView ()
+@interface PKChatMessagePlayerView () <MovieDecoderDelegate>
 
 @property (nonatomic, strong) NSURL *videoURL;
 
@@ -18,6 +19,8 @@
 @property (nonatomic, strong) AVURLAsset *asset;
 
 @property (nonatomic, strong) NSMutableArray *images;
+
+@property (nonatomic, strong) PKVideoDecoder *videoDecoder;
 
 @end
 
@@ -35,50 +38,70 @@
         _previewImage = previewImage;
         _images = [NSMutableArray new];
         
-        self.asset = [AVURLAsset URLAssetWithURL:videoURL options:nil];
+        _videoDecoder = [[PKVideoDecoder alloc] initWithMovie:videoURL format:kCVPixelFormatType_32BGRA];
+        _videoDecoder.delegate = self;
+        [_videoDecoder start];
         
-        [self.asset loadValuesAsynchronouslyForKeys:@[@"playable"] completionHandler:^{
-            
-            AVAssetReader *reader = [[AVAssetReader alloc] initWithAsset:self.asset error:nil];
-            NSArray *videoTracks = [self.asset tracksWithMediaType:AVMediaTypeVideo];
-            AVAssetTrack *videoTrack =[videoTracks objectAtIndex:0];
-            
-            int m_pixelFormatType = kCVPixelFormatType_32BGRA;
-            NSMutableDictionary *options = [NSMutableDictionary dictionary];
-            [options setObject:@(m_pixelFormatType) forKey:(id)kCVPixelBufferPixelFormatTypeKey];
-            
-            NSDictionary *pixelBufferAttributes = @{
-                                                    (id)kCVPixelBufferPixelFormatTypeKey : [NSNumber numberWithInt:kCVPixelFormatType_32BGRA],
-                                                    (id)kCVPixelBufferWidthKey : [NSNumber numberWithFloat:320],
-                                                    (id)kCVPixelBufferHeightKey : [NSNumber numberWithFloat:180]
-                                                    };
-            AVAssetReaderTrackOutput *videoReaderOutput = [[AVAssetReaderTrackOutput alloc] initWithTrack:videoTrack outputSettings:options];
-            
-            [reader addOutput:videoReaderOutput];
-            [reader startReading];
-            
-            // 要确保nominalFrameRate>0，之前出现过android拍的0帧视频
-            NSInteger i = 0;
-            while ([reader status] == AVAssetReaderStatusReading && videoTrack.nominalFrameRate > 0) {
-                // 读取 video sample
-                CMSampleBufferRef videoBuffer = [videoReaderOutput copyNextSampleBuffer];
-                if (videoBuffer) {
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        [self playWithVideoBuffer:videoBuffer];
-                    });
-                }
-                NSLog(@"i == %@",@(i++));
-                CMSampleBufferInvalidate(videoBuffer);
-                CMTime duration = self.asset.duration;
-                [NSThread sleepForTimeInterval:(1.0/24)];
-            }
-
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [self mMoveDecoderOnDecoderFinished];
-            });
-        }];
+//        self.asset = [AVURLAsset URLAssetWithURL:videoURL options:nil];
+//        
+//        [self.asset loadValuesAsynchronouslyForKeys:@[@"playable"] completionHandler:^{
+//            
+//            AVAssetReader *reader = [[AVAssetReader alloc] initWithAsset:self.asset error:nil];
+//            NSArray *videoTracks = [self.asset tracksWithMediaType:AVMediaTypeVideo];
+//            AVAssetTrack *videoTrack =[videoTracks objectAtIndex:0];
+//            
+//            int m_pixelFormatType = kCVPixelFormatType_32BGRA;
+//            NSMutableDictionary *options = [NSMutableDictionary dictionary];
+//            [options setObject:@(m_pixelFormatType) forKey:(id)kCVPixelBufferPixelFormatTypeKey];
+//            
+//            NSDictionary *pixelBufferAttributes = @{
+//                                                    (id)kCVPixelBufferPixelFormatTypeKey : [NSNumber numberWithInt:kCVPixelFormatType_32BGRA],
+//                                                    (id)kCVPixelBufferWidthKey : [NSNumber numberWithFloat:320],
+//                                                    (id)kCVPixelBufferHeightKey : [NSNumber numberWithFloat:180]
+//                                                    };
+//            AVAssetReaderTrackOutput *videoReaderOutput = [[AVAssetReaderTrackOutput alloc] initWithTrack:videoTrack outputSettings:options];
+//            
+//            [reader addOutput:videoReaderOutput];
+//            [reader startReading];
+//            
+//            // 要确保nominalFrameRate>0，之前出现过android拍的0帧视频
+//            NSInteger i = 0;
+//            while ([reader status] == AVAssetReaderStatusReading && videoTrack.nominalFrameRate > 0) {
+//                // 读取 video sample
+//                CMSampleBufferRef videoBuffer = [videoReaderOutput copyNextSampleBuffer];
+//                if (videoBuffer) {
+//                    dispatch_async(dispatch_get_main_queue(), ^{
+//                        [self playWithVideoBuffer:videoBuffer];
+//                    });
+//                }
+//                NSLog(@"i == %@",@(i++));
+//                CMSampleBufferInvalidate(videoBuffer);
+//                CMTime duration = self.asset.duration;
+//                [NSThread sleepForTimeInterval:(1.0/24)];
+//            }
+//
+//            dispatch_async(dispatch_get_main_queue(), ^{
+//                [self mMoveDecoderOnDecoderFinished];
+//            });
+//        }];
     }
     return self;
+}
+
+- (void)movieDecoderDidDecodeFrame:(PKVideoDecoder *)decoder pixelBuffer:(CVImageBufferRef)buffer {
+        CGImageRef cgimage = [self imageFromSampleBufferRef:buffer];
+        if (!(__bridge id)(cgimage)) { return; }
+        //    [self.images addObject:((__bridge id)(cgimage))];
+        //    CGImageRelease(cgimage);
+    dispatch_async(dispatch_get_main_queue(), ^{
+
+        self.layer.contents = (__bridge id)(cgimage);
+        CGImageRelease(cgimage);
+    });
+}
+
+-(void)movieDecoderDidFinishDecoding:(PKVideoDecoder *)decoder {
+    
 }
 
 - (void)dealloc
@@ -86,14 +109,14 @@
     _images = nil;
 }
 
-- (void)playWithVideoBuffer:(CMSampleBufferRef)videoBuffer {
-    CGImageRef cgimage = [self imageFromSampleBufferRef:videoBuffer];
-    if (!(__bridge id)(cgimage)) { return; }
-//    [self.images addObject:((__bridge id)(cgimage))];
+//- (void)playWithVideoBuffer:(CMSampleBufferRef)videoBuffer {
+//    CGImageRef cgimage = [self imageFromSampleBufferRef:videoBuffer];
+//    if (!(__bridge id)(cgimage)) { return; }
+////    [self.images addObject:((__bridge id)(cgimage))];
+////    CGImageRelease(cgimage);
+//    self.layer.contents = (__bridge id)(cgimage);
 //    CGImageRelease(cgimage);
-    self.layer.contents = (__bridge id)(cgimage);
-    CGImageRelease(cgimage);
-}
+//}
 
 - (void)mMoveDecoderOnDecoderFinished
 {
@@ -108,10 +131,9 @@
 //    [self.layer addAnimation:animation forKey:nil];
 }
 
-- (CGImageRef)imageFromSampleBufferRef:(CMSampleBufferRef)sampleBufferRef
+- (CGImageRef)imageFromSampleBufferRef:(CVImageBufferRef)imageBuffer
 {
     // 为媒体数据设置一个CMSampleBufferRef
-    CVImageBufferRef imageBuffer = CMSampleBufferGetImageBuffer(sampleBufferRef);
 
     // 锁定 pixel buffer 的基地址
     CVPixelBufferLockBaseAddress(imageBuffer, 0);

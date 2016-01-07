@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		883CB9B31C3A7935004D37C6 /* UIImage+PKShortVideoPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 883CB9B21C3A7935004D37C6 /* UIImage+PKShortVideoPlayer.m */; };
+		8863BABC1C3E023300B2EF06 /* PKVideoDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 8863BABB1C3E023300B2EF06 /* PKVideoDecoder.m */; };
 		886975FD1C3B6E0500653EB9 /* PKChatMessagePlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 886975FC1C3B6E0500653EB9 /* PKChatMessagePlayerView.m */; };
 		886975FF1C3BAA9600653EB9 /* demo.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 886975FE1C3BAA9600653EB9 /* demo.mp4 */; };
 		88DDEC341C3A568F00FA04E4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 88DDEC331C3A568F00FA04E4 /* main.m */; };
@@ -25,6 +26,8 @@
 /* Begin PBXFileReference section */
 		883CB9B11C3A7935004D37C6 /* UIImage+PKShortVideoPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+PKShortVideoPlayer.h"; path = "PKShortVideoPlayer/Categories/UIImage+PKShortVideoPlayer.h"; sourceTree = "<group>"; };
 		883CB9B21C3A7935004D37C6 /* UIImage+PKShortVideoPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+PKShortVideoPlayer.m"; path = "PKShortVideoPlayer/Categories/UIImage+PKShortVideoPlayer.m"; sourceTree = "<group>"; };
+		8863BABA1C3E023300B2EF06 /* PKVideoDecoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKVideoDecoder.h; path = PKShortVideoPlayer/PKVideoDecoder.h; sourceTree = "<group>"; };
+		8863BABB1C3E023300B2EF06 /* PKVideoDecoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PKVideoDecoder.m; path = PKShortVideoPlayer/PKVideoDecoder.m; sourceTree = "<group>"; };
 		886975FB1C3B6E0500653EB9 /* PKChatMessagePlayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKChatMessagePlayerView.h; path = PKShortVideoPlayer/PKChatMessagePlayerView.h; sourceTree = "<group>"; };
 		886975FC1C3B6E0500653EB9 /* PKChatMessagePlayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PKChatMessagePlayerView.m; path = PKShortVideoPlayer/PKChatMessagePlayerView.m; sourceTree = "<group>"; };
 		886975FE1C3BAA9600653EB9 /* demo.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = demo.mp4; sourceTree = "<group>"; };
@@ -122,6 +125,8 @@
 				88DDEC521C3A63FB00FA04E4 /* PKFullScreenPlayerView.m */,
 				88DDEC551C3A673B00FA04E4 /* PKFullScreenPlayerViewController.h */,
 				88DDEC561C3A673B00FA04E4 /* PKFullScreenPlayerViewController.m */,
+				8863BABA1C3E023300B2EF06 /* PKVideoDecoder.h */,
+				8863BABB1C3E023300B2EF06 /* PKVideoDecoder.m */,
 			);
 			name = PKShortVideoPlayer;
 			sourceTree = "<group>";
@@ -199,6 +204,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				88DDEC571C3A673B00FA04E4 /* PKFullScreenPlayerViewController.m in Sources */,
+				8863BABC1C3E023300B2EF06 /* PKVideoDecoder.m in Sources */,
 				88DDEC3A1C3A568F00FA04E4 /* ViewController.m in Sources */,
 				88DDEC371C3A568F00FA04E4 /* AppDelegate.m in Sources */,
 				883CB9B31C3A7935004D37C6 /* UIImage+PKShortVideoPlayer.m in Sources */,
@@ -267,7 +273,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -304,7 +310,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
