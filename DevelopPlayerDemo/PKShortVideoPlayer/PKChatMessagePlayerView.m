@@ -10,7 +10,7 @@
 @import AVFoundation;
 #import "PKVideoDecoder.h"
 
-@interface PKChatMessagePlayerView () <MovieDecoderDelegate>
+@interface PKChatMessagePlayerView () <PKVideoDecoderDelegate>
 
 @property (nonatomic, strong) NSURL *videoURL;
 
@@ -38,7 +38,7 @@
         _previewImage = previewImage;
         _images = [NSMutableArray new];
         
-        _videoDecoder = [[PKVideoDecoder alloc] initWithMovie:videoURL format:kCVPixelFormatType_32BGRA];
+        _videoDecoder = [[PKVideoDecoder alloc] initWithVideoURL:videoURL format:kCVPixelFormatType_32BGRA];
         _videoDecoder.delegate = self;
         [_videoDecoder start];
         
@@ -88,7 +88,7 @@
     return self;
 }
 
-- (void)movieDecoderDidDecodeFrame:(PKVideoDecoder *)decoder pixelBuffer:(CVImageBufferRef)buffer {
+- (void)videoDecoderDidDecodeFrame:(PKVideoDecoder *)decoder pixelBuffer:(CVImageBufferRef)buffer {
         CGImageRef cgimage = [self imageFromSampleBufferRef:buffer];
         if (!(__bridge id)(cgimage)) { return; }
         //    [self.images addObject:((__bridge id)(cgimage))];
@@ -100,7 +100,7 @@
     });
 }
 
--(void)movieDecoderDidFinishDecoding:(PKVideoDecoder *)decoder {
+-(void)videoDecoderDidFinishDecoding:(PKVideoDecoder *)decoder {
     
 }
 
