@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AVAssetReaderViewController : UIViewController
+@interface PKLayerContentsViewController : UIViewController
 
 @property (nonatomic, strong) NSURL *URL;
 @property (nonatomic, strong) UIImage *image;

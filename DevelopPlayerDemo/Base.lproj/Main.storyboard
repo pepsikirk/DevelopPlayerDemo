@@ -18,8 +18,8 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Ob-9r-dXY">
-                                <rect key="frame" x="8" y="349" width="304" height="30"/>
-                                <state key="normal" title="AVAssetReader+AVAssetReaderTrackOutput"/>
+                                <rect key="frame" x="52" y="269" width="216" height="30"/>
+                                <state key="normal" title="AVAssetReader+Layer.Contents"/>
                                 <connections>
                                     <segue destination="cMu-rJ-VxI" kind="push" identifier="segueAVAssetReader" id="c7i-ax-um6"/>
                                 </connections>
@@ -31,12 +31,18 @@
                                     <action selector="goToAVPlayer:" destination="BYZ-38-t0r" eventType="touchUpInside" id="YIq-Os-tcS"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y8Y-ug-6J9">
+                                <rect key="frame" x="64" y="349" width="192" height="30"/>
+                                <state key="normal" title="AVAssetReader+Open GLES"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="y8Y-ug-6J9" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="03z-YH-bl9"/>
                             <constraint firstItem="MfN-14-YnW" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-80" id="cnK-cd-x9w"/>
                             <constraint firstItem="MfN-14-YnW" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="d4V-Uf-Vtn"/>
-                            <constraint firstItem="4Ob-9r-dXY" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="80" id="eSv-6d-YK9"/>
+                            <constraint firstItem="4Ob-9r-dXY" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="eSv-6d-YK9"/>
+                            <constraint firstItem="y8Y-ug-6J9" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="80" id="ef0-HT-G2z"/>
                             <constraint firstItem="4Ob-9r-dXY" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="xWn-LS-cf8"/>
                         </constraints>
                     </view>
@@ -65,7 +71,7 @@
         <!--AVAssetReader+AVAssetReaderTrackOutput-->
         <scene sceneID="FNH-Li-o9x">
             <objects>
-                <viewController title="AVAssetReader+AVAssetReaderTrackOutput" id="cMu-rJ-VxI" customClass="AVAssetReaderViewController" sceneMemberID="viewController">
+                <viewController title="AVAssetReader+AVAssetReaderTrackOutput" id="cMu-rJ-VxI" customClass="PKLayerContentsViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="All-jl-UFU"/>
                         <viewControllerLayoutGuide type="bottom" id="Z1j-Sh-7bO"/>

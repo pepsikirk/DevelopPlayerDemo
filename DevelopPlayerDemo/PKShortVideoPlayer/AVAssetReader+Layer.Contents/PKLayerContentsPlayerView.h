@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface PKChatMessagePlayerView : UIView
+@interface PKLayerContentsPlayerView : UIView
 
 - (instancetype)initWithFrame:(CGRect)frame videoURL:(NSURL *)videoURL previewImage:(UIImage *)previewImage;
 

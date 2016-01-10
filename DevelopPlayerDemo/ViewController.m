@@ -9,7 +9,7 @@
 #import "ViewController.h"
 #import "PKFullScreenPlayerViewController.h"
 #import "UIImage+PKShortVideoPlayer.h"
-#import "AVAssetReaderViewController.h"
+#import "PKLayerContentsViewController.h"
 
 @interface ViewController ()
 
@@ -55,7 +55,7 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"segueAVAssetReader"]) {
-        AVAssetReaderViewController *vc = segue.destinationViewController;
+        PKLayerContentsViewController *vc = segue.destinationViewController;
         vc.URL = self.URL;
         vc.image = self.image;
     }

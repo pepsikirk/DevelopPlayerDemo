@@ -24,9 +24,6 @@
 @interface PKVideoDecoder : NSObject
 
 @property (nonatomic, assign , readonly) BOOL isRunning, isFinished;
-@property (nonatomic, assign) int format;
-@property (nonatomic, assign) int frameRate;
-@property (nonatomic, assign) double currentTime;
 @property (nonatomic, assign) BOOL loop;
 
 @property (nonatomic, weak)   id<PKVideoDecoderDelegate> delegate;

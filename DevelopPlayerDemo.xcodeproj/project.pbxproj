@@ -8,8 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		883CB9B31C3A7935004D37C6 /* UIImage+PKShortVideoPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 883CB9B21C3A7935004D37C6 /* UIImage+PKShortVideoPlayer.m */; };
-		8863BABC1C3E023300B2EF06 /* PKVideoDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 8863BABB1C3E023300B2EF06 /* PKVideoDecoder.m */; };
-		886975FD1C3B6E0500653EB9 /* PKChatMessagePlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 886975FC1C3B6E0500653EB9 /* PKChatMessagePlayerView.m */; };
+		884C0B541C434C9A008AABAA /* PKLayerContentsPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 884C0B511C434C9A008AABAA /* PKLayerContentsPlayerView.m */; };
+		884C0B551C434C9A008AABAA /* PKVideoDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 884C0B531C434C9A008AABAA /* PKVideoDecoder.m */; };
+		884C0B581C434CA5008AABAA /* PKChatMessagePlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 884C0B571C434CA5008AABAA /* PKChatMessagePlayerView.m */; };
+		884C0B5E1C434D20008AABAA /* PKFullScreenPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 884C0B5B1C434D20008AABAA /* PKFullScreenPlayerView.m */; };
+		884C0B5F1C434D20008AABAA /* PKFullScreenPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 884C0B5D1C434D20008AABAA /* PKFullScreenPlayerViewController.m */; };
 		88DDEC341C3A568F00FA04E4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 88DDEC331C3A568F00FA04E4 /* main.m */; };
 		88DDEC371C3A568F00FA04E4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 88DDEC361C3A568F00FA04E4 /* AppDelegate.m */; };
 		88DDEC3A1C3A568F00FA04E4 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88DDEC391C3A568F00FA04E4 /* ViewController.m */; };
@@ -17,18 +20,22 @@
 		88DDEC3F1C3A568F00FA04E4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 88DDEC3E1C3A568F00FA04E4 /* Assets.xcassets */; };
 		88DDEC421C3A568F00FA04E4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88DDEC401C3A568F00FA04E4 /* LaunchScreen.storyboard */; };
 		88DDEC4A1C3A576A00FA04E4 /* Cat.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 88DDEC491C3A576A00FA04E4 /* Cat.mp4 */; };
-		88DDEC501C3A5D2100FA04E4 /* AVAssetReaderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88DDEC4F1C3A5D2100FA04E4 /* AVAssetReaderViewController.m */; };
-		88DDEC531C3A63FB00FA04E4 /* PKFullScreenPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 88DDEC521C3A63FB00FA04E4 /* PKFullScreenPlayerView.m */; };
-		88DDEC571C3A673B00FA04E4 /* PKFullScreenPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88DDEC561C3A673B00FA04E4 /* PKFullScreenPlayerViewController.m */; };
+		88DDEC501C3A5D2100FA04E4 /* PKLayerContentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88DDEC4F1C3A5D2100FA04E4 /* PKLayerContentsViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		883CB9B11C3A7935004D37C6 /* UIImage+PKShortVideoPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+PKShortVideoPlayer.h"; path = "PKShortVideoPlayer/Categories/UIImage+PKShortVideoPlayer.h"; sourceTree = "<group>"; };
 		883CB9B21C3A7935004D37C6 /* UIImage+PKShortVideoPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+PKShortVideoPlayer.m"; path = "PKShortVideoPlayer/Categories/UIImage+PKShortVideoPlayer.m"; sourceTree = "<group>"; };
-		8863BABA1C3E023300B2EF06 /* PKVideoDecoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKVideoDecoder.h; path = PKShortVideoPlayer/PKVideoDecoder.h; sourceTree = "<group>"; };
-		8863BABB1C3E023300B2EF06 /* PKVideoDecoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PKVideoDecoder.m; path = PKShortVideoPlayer/PKVideoDecoder.m; sourceTree = "<group>"; };
-		886975FB1C3B6E0500653EB9 /* PKChatMessagePlayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKChatMessagePlayerView.h; path = PKShortVideoPlayer/PKChatMessagePlayerView.h; sourceTree = "<group>"; };
-		886975FC1C3B6E0500653EB9 /* PKChatMessagePlayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PKChatMessagePlayerView.m; path = PKShortVideoPlayer/PKChatMessagePlayerView.m; sourceTree = "<group>"; };
+		884C0B501C434C9A008AABAA /* PKLayerContentsPlayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKLayerContentsPlayerView.h; path = "PKShortVideoPlayer/AVAssetReader+Layer.Contents/PKLayerContentsPlayerView.h"; sourceTree = "<group>"; };
+		884C0B511C434C9A008AABAA /* PKLayerContentsPlayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PKLayerContentsPlayerView.m; path = "PKShortVideoPlayer/AVAssetReader+Layer.Contents/PKLayerContentsPlayerView.m"; sourceTree = "<group>"; };
+		884C0B521C434C9A008AABAA /* PKVideoDecoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKVideoDecoder.h; path = "PKShortVideoPlayer/AVAssetReader+Layer.Contents/PKVideoDecoder.h"; sourceTree = "<group>"; };
+		884C0B531C434C9A008AABAA /* PKVideoDecoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PKVideoDecoder.m; path = "PKShortVideoPlayer/AVAssetReader+Layer.Contents/PKVideoDecoder.m"; sourceTree = "<group>"; };
+		884C0B561C434CA5008AABAA /* PKChatMessagePlayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKChatMessagePlayerView.h; path = "PKShortVideoPlayer/AVAssetReader+Open GLES/PKChatMessagePlayerView.h"; sourceTree = "<group>"; };
+		884C0B571C434CA5008AABAA /* PKChatMessagePlayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PKChatMessagePlayerView.m; path = "PKShortVideoPlayer/AVAssetReader+Open GLES/PKChatMessagePlayerView.m"; sourceTree = "<group>"; };
+		884C0B5A1C434D20008AABAA /* PKFullScreenPlayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKFullScreenPlayerView.h; path = PKShortVideoPlayer/AVPlayer/PKFullScreenPlayerView.h; sourceTree = "<group>"; };
+		884C0B5B1C434D20008AABAA /* PKFullScreenPlayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PKFullScreenPlayerView.m; path = PKShortVideoPlayer/AVPlayer/PKFullScreenPlayerView.m; sourceTree = "<group>"; };
+		884C0B5C1C434D20008AABAA /* PKFullScreenPlayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKFullScreenPlayerViewController.h; path = PKShortVideoPlayer/AVPlayer/PKFullScreenPlayerViewController.h; sourceTree = "<group>"; };
+		884C0B5D1C434D20008AABAA /* PKFullScreenPlayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PKFullScreenPlayerViewController.m; path = PKShortVideoPlayer/AVPlayer/PKFullScreenPlayerViewController.m; sourceTree = "<group>"; };
 		88DDEC2F1C3A568F00FA04E4 /* DevelopPlayerDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DevelopPlayerDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		88DDEC331C3A568F00FA04E4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		88DDEC351C3A568F00FA04E4 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -40,12 +47,8 @@
 		88DDEC411C3A568F00FA04E4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		88DDEC431C3A568F00FA04E4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		88DDEC491C3A576A00FA04E4 /* Cat.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = Cat.mp4; sourceTree = "<group>"; };
-		88DDEC4E1C3A5D2100FA04E4 /* AVAssetReaderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVAssetReaderViewController.h; sourceTree = "<group>"; };
-		88DDEC4F1C3A5D2100FA04E4 /* AVAssetReaderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVAssetReaderViewController.m; sourceTree = "<group>"; };
-		88DDEC511C3A63FB00FA04E4 /* PKFullScreenPlayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKFullScreenPlayerView.h; path = PKShortVideoPlayer/PKFullScreenPlayerView.h; sourceTree = "<group>"; };
-		88DDEC521C3A63FB00FA04E4 /* PKFullScreenPlayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PKFullScreenPlayerView.m; path = PKShortVideoPlayer/PKFullScreenPlayerView.m; sourceTree = "<group>"; };
-		88DDEC551C3A673B00FA04E4 /* PKFullScreenPlayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKFullScreenPlayerViewController.h; path = PKShortVideoPlayer/PKFullScreenPlayerViewController.h; sourceTree = "<group>"; };
-		88DDEC561C3A673B00FA04E4 /* PKFullScreenPlayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PKFullScreenPlayerViewController.m; path = PKShortVideoPlayer/PKFullScreenPlayerViewController.m; sourceTree = "<group>"; };
+		88DDEC4E1C3A5D2100FA04E4 /* PKLayerContentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PKLayerContentsViewController.h; sourceTree = "<group>"; };
+		88DDEC4F1C3A5D2100FA04E4 /* PKLayerContentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PKLayerContentsViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +69,37 @@
 				883CB9B21C3A7935004D37C6 /* UIImage+PKShortVideoPlayer.m */,
 			);
 			name = Categories;
+			sourceTree = "<group>";
+		};
+		884C0B4B1C434B39008AABAA /* AVAssetReader+Layer.Contents */ = {
+			isa = PBXGroup;
+			children = (
+				884C0B501C434C9A008AABAA /* PKLayerContentsPlayerView.h */,
+				884C0B511C434C9A008AABAA /* PKLayerContentsPlayerView.m */,
+				884C0B521C434C9A008AABAA /* PKVideoDecoder.h */,
+				884C0B531C434C9A008AABAA /* PKVideoDecoder.m */,
+			);
+			name = "AVAssetReader+Layer.Contents";
+			sourceTree = "<group>";
+		};
+		884C0B4C1C434C1A008AABAA /* AVAssetReader+Open GLES */ = {
+			isa = PBXGroup;
+			children = (
+				884C0B561C434CA5008AABAA /* PKChatMessagePlayerView.h */,
+				884C0B571C434CA5008AABAA /* PKChatMessagePlayerView.m */,
+			);
+			name = "AVAssetReader+Open GLES";
+			sourceTree = "<group>";
+		};
+		884C0B591C434CFE008AABAA /* AVPlayer */ = {
+			isa = PBXGroup;
+			children = (
+				884C0B5A1C434D20008AABAA /* PKFullScreenPlayerView.h */,
+				884C0B5B1C434D20008AABAA /* PKFullScreenPlayerView.m */,
+				884C0B5C1C434D20008AABAA /* PKFullScreenPlayerViewController.h */,
+				884C0B5D1C434D20008AABAA /* PKFullScreenPlayerViewController.m */,
+			);
+			name = AVPlayer;
 			sourceTree = "<group>";
 		};
 		88DDEC261C3A568F00FA04E4 = {
@@ -90,8 +124,8 @@
 				88DDEC541C3A640000FA04E4 /* PKShortVideoPlayer */,
 				88DDEC381C3A568F00FA04E4 /* ViewController.h */,
 				88DDEC391C3A568F00FA04E4 /* ViewController.m */,
-				88DDEC4E1C3A5D2100FA04E4 /* AVAssetReaderViewController.h */,
-				88DDEC4F1C3A5D2100FA04E4 /* AVAssetReaderViewController.m */,
+				88DDEC4E1C3A5D2100FA04E4 /* PKLayerContentsViewController.h */,
+				88DDEC4F1C3A5D2100FA04E4 /* PKLayerContentsViewController.m */,
 				88DDEC351C3A568F00FA04E4 /* AppDelegate.h */,
 				88DDEC361C3A568F00FA04E4 /* AppDelegate.m */,
 				88DDEC3B1C3A568F00FA04E4 /* Main.storyboard */,
@@ -116,14 +150,9 @@
 			isa = PBXGroup;
 			children = (
 				883CB9B01C3A7869004D37C6 /* Categories */,
-				886975FB1C3B6E0500653EB9 /* PKChatMessagePlayerView.h */,
-				886975FC1C3B6E0500653EB9 /* PKChatMessagePlayerView.m */,
-				88DDEC511C3A63FB00FA04E4 /* PKFullScreenPlayerView.h */,
-				88DDEC521C3A63FB00FA04E4 /* PKFullScreenPlayerView.m */,
-				88DDEC551C3A673B00FA04E4 /* PKFullScreenPlayerViewController.h */,
-				88DDEC561C3A673B00FA04E4 /* PKFullScreenPlayerViewController.m */,
-				8863BABA1C3E023300B2EF06 /* PKVideoDecoder.h */,
-				8863BABB1C3E023300B2EF06 /* PKVideoDecoder.m */,
+				884C0B591C434CFE008AABAA /* AVPlayer */,
+				884C0B4B1C434B39008AABAA /* AVAssetReader+Layer.Contents */,
+				884C0B4C1C434C1A008AABAA /* AVAssetReader+Open GLES */,
 			);
 			name = PKShortVideoPlayer;
 			sourceTree = "<group>";
@@ -199,15 +228,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				88DDEC571C3A673B00FA04E4 /* PKFullScreenPlayerViewController.m in Sources */,
-				8863BABC1C3E023300B2EF06 /* PKVideoDecoder.m in Sources */,
+				884C0B581C434CA5008AABAA /* PKChatMessagePlayerView.m in Sources */,
+				884C0B5F1C434D20008AABAA /* PKFullScreenPlayerViewController.m in Sources */,
 				88DDEC3A1C3A568F00FA04E4 /* ViewController.m in Sources */,
 				88DDEC371C3A568F00FA04E4 /* AppDelegate.m in Sources */,
+				884C0B541C434C9A008AABAA /* PKLayerContentsPlayerView.m in Sources */,
 				883CB9B31C3A7935004D37C6 /* UIImage+PKShortVideoPlayer.m in Sources */,
-				886975FD1C3B6E0500653EB9 /* PKChatMessagePlayerView.m in Sources */,
-				88DDEC501C3A5D2100FA04E4 /* AVAssetReaderViewController.m in Sources */,
+				884C0B5E1C434D20008AABAA /* PKFullScreenPlayerView.m in Sources */,
+				88DDEC501C3A5D2100FA04E4 /* PKLayerContentsViewController.m in Sources */,
+				884C0B551C434C9A008AABAA /* PKVideoDecoder.m in Sources */,
 				88DDEC341C3A568F00FA04E4 /* main.m in Sources */,
-				88DDEC531C3A63FB00FA04E4 /* PKFullScreenPlayerView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

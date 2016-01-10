@@ -6,16 +6,16 @@
 //  Copyright © 2016年 1yyg. All rights reserved.
 //
 
-#import "AVAssetReaderViewController.h"
-#import "PKChatMessagePlayerView.h"
+#import "PKLayerContentsViewController.h"
+#import "PKLayerContentsPlayerView.h"
 
-@interface AVAssetReaderViewController ()
+@interface PKLayerContentsViewController ()
 
-@property (nonatomic, strong) PKChatMessagePlayerView *playerView;
+@property (nonatomic, strong) PKLayerContentsPlayerView *playerView;
 
 @end
 
-@implementation AVAssetReaderViewController
+@implementation PKLayerContentsViewController
 
 #pragma mark - View Lifecycle
 
@@ -29,7 +29,7 @@
     CGSize viewSize = self.view.bounds.size;
     CGSize imageSize = self.image.size;
     
-    self.playerView = [[PKChatMessagePlayerView alloc] initWithFrame:CGRectMake(0, 0, viewSize.width, viewSize.width* (imageSize.height/imageSize.width) ) videoURL:self.URL previewImage:self.image];
+    self.playerView = [[PKLayerContentsPlayerView alloc] initWithFrame:CGRectMake(0, 0, viewSize.width, viewSize.width* (imageSize.height/imageSize.width) ) videoURL:self.URL previewImage:self.image];
     self.playerView.center = self.view.center;
     
     [self.view addSubview:self.playerView];
