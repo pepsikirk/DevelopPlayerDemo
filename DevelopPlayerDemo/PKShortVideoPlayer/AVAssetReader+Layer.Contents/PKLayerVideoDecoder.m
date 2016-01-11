@@ -6,11 +6,11 @@
 //  Copyright © 2016年 1yyg. All rights reserved.
 //
 
-#import "PKVideoDecoder.h"
+#import "PKLayerVideoDecoder.h"
 
 @import AVFoundation;
 
-@interface PKVideoDecoder ()
+@interface PKLayerVideoDecoder ()
 
 @property (nonatomic, assign) int format;
 @property (nonatomic, assign) double frameRate;
@@ -29,7 +29,7 @@
 
 @end
 
-@implementation PKVideoDecoder
+@implementation PKLayerVideoDecoder
 
 #pragma mark - Initialization
 

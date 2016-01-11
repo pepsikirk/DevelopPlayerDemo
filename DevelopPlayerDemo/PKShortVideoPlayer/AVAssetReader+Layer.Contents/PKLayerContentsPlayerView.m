@@ -8,14 +8,14 @@
 
 #import "PKLayerContentsPlayerView.h"
 @import AVFoundation;
-#import "PKVideoDecoder.h"
+#import "PKLayerVideoDecoder.h"
 
 @interface PKLayerContentsPlayerView () <PKVideoDecoderDelegate>
 
 @property (nonatomic, strong) NSURL *videoURL;
 @property (nonatomic, strong) UIImage *previewImage;
 
-@property (nonatomic, strong) PKVideoDecoder *videoDecoder;
+@property (nonatomic, strong) PKLayerVideoDecoder *videoDecoder;
 
 @end
 
@@ -32,7 +32,7 @@
         _videoURL = videoURL;
         _previewImage = previewImage;
         
-        _videoDecoder = [[PKVideoDecoder alloc] initWithVideoURL:videoURL format:kCVPixelFormatType_32BGRA];
+        _videoDecoder = [[PKLayerVideoDecoder alloc] initWithVideoURL:videoURL format:kCVPixelFormatType_32BGRA];
         _videoDecoder.delegate = self;
         _videoDecoder.loop = YES;
         [_videoDecoder start];
@@ -40,9 +40,13 @@
     return self;
 }
 
+- (void)stop {
+    [self.videoDecoder stop];
+}
+
 #pragma mark - PKVideoDecoderDelegate
 
-- (void)videoDecoderDidDecodeFrame:(PKVideoDecoder *)decoder pixelBuffer:(CVImageBufferRef)buffer {
+- (void)videoDecoderDidDecodeFrame:(PKLayerVideoDecoder *)decoder pixelBuffer:(CVImageBufferRef)buffer {
     CGImageRef image = [PKLayerContentsPlayerView imageFromSampleBufferRef:buffer];
     
     if (!image) {
@@ -55,7 +59,7 @@
     });
 }
 
--(void)videoDecoderDidFinishDecoding:(PKVideoDecoder *)decoder {
+-(void)videoDecoderDidFinishDecoding:(PKLayerVideoDecoder *)decoder {
     
 }
 

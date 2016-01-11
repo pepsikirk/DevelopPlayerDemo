@@ -10,6 +10,7 @@
 #import "PKFullScreenPlayerViewController.h"
 #import "UIImage+PKShortVideoPlayer.h"
 #import "PKLayerContentsViewController.h"
+#import "PKOpenGLESViewController.h"
 
 @interface ViewController ()
 
@@ -25,7 +26,7 @@
     // Do any additional setup after loading the view, typically from a nib.
     self.URL = [[NSBundle mainBundle] URLForResource:@"Cat" withExtension:@"mp4"];
     
-    self.image = [UIImage previewImageWithVideoURL:self.URL];
+    self.image = [UIImage pk_previewImageWithVideoURL:self.URL];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -54,8 +55,12 @@
 #pragma mark - Segue
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([segue.identifier isEqualToString:@"segueAVAssetReader"]) {
+    if ([segue.identifier isEqualToString:@"segueLayerContents"]) {
         PKLayerContentsViewController *vc = segue.destinationViewController;
+        vc.URL = self.URL;
+        vc.image = self.image;
+    } else if ([segue.identifier isEqualToString:@"segueOpenGLES"]) {
+        PKOpenGLESViewController *vc = segue.destinationViewController;
         vc.URL = self.URL;
         vc.image = self.image;
     }

@@ -11,7 +11,7 @@
 
 @implementation UIImage (PKShortVideoPlayer)
 
-+ (UIImage *)previewImageWithVideoURL:(NSURL *)videoURL {
++ (UIImage *)pk_previewImageWithVideoURL:(NSURL *)videoURL {
     AVAsset *asset = [AVAsset assetWithURL:videoURL];
     
     AVAssetImageGenerator *generator = [AVAssetImageGenerator assetImageGeneratorWithAsset:asset];

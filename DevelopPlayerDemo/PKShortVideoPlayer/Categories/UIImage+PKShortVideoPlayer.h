@@ -11,6 +11,6 @@
 
 @interface UIImage (PKShortVideoPlayer)
 
-+ (UIImage *)previewImageWithVideoURL:(NSURL *)videoURL;
++ (UIImage *)pk_previewImageWithVideoURL:(NSURL *)videoURL;
 
 @end

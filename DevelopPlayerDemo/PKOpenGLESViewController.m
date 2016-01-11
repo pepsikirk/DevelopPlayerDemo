@@ -1,21 +1,21 @@
 //
-//  AVAssetReaderViewController.m
+//  PKOpenGLESViewController.m
 //  DevelopPlayerDemo
 //
-//  Created by jiangxincai on 16/1/4.
+//  Created by jiangxincai on 16/1/11.
 //  Copyright © 2016年 1yyg. All rights reserved.
 //
 
-#import "PKLayerContentsViewController.h"
-#import "PKLayerContentsPlayerView.h"
+#import "PKOpenGLESViewController.h"
+#import "PKChatMessagePlayerView.h"
 
-@interface PKLayerContentsViewController ()
+@interface PKOpenGLESViewController ()
 
-@property (nonatomic, strong) PKLayerContentsPlayerView *playerView;
+@property (nonatomic, strong) PKChatMessagePlayerView *playerView;
 
 @end
 
-@implementation PKLayerContentsViewController
+@implementation PKOpenGLESViewController
 
 #pragma mark - View Lifecycle
 
@@ -29,7 +29,7 @@
     CGSize viewSize = self.view.bounds.size;
     CGSize imageSize = self.image.size;
     
-    self.playerView = [[PKLayerContentsPlayerView alloc] initWithFrame:CGRectMake(0, 0, viewSize.width, viewSize.width* (imageSize.height/imageSize.width) ) videoURL:self.URL previewImage:self.image];
+    self.playerView = [[PKChatMessagePlayerView alloc] initWithFrame:CGRectMake(0, 0, viewSize.width, viewSize.width* (imageSize.height/imageSize.width) ) videoURL:self.URL previewImage:self.image];
     self.playerView.center = self.view.center;
     
     [self.view addSubview:self.playerView];
@@ -44,5 +44,4 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
 @end

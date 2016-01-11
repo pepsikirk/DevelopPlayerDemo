@@ -9,19 +9,19 @@
 #import <Foundation/Foundation.h>
 #import <CoreMedia/CoreMedia.h>
 
-@class PKVideoDecoder;
+@class PKLayerVideoDecoder;
 
 @protocol PKVideoDecoderDelegate <NSObject>
 
 @required
-- (void)videoDecoderDidDecodeFrame:(PKVideoDecoder *)decoder pixelBuffer:(CVImageBufferRef)buffer;
+- (void)videoDecoderDidDecodeFrame:(PKLayerVideoDecoder *)decoder pixelBuffer:(CVImageBufferRef)buffer;
 
 @optional
-- (void)videoDecoderDidFinishDecoding:(PKVideoDecoder *)decoder;
+- (void)videoDecoderDidFinishDecoding:(PKLayerVideoDecoder *)decoder;
 
 @end
 
-@interface PKVideoDecoder : NSObject
+@interface PKLayerVideoDecoder : NSObject
 
 @property (nonatomic, assign , readonly) BOOL isRunning, isFinished;
 @property (nonatomic, assign) BOOL loop;
