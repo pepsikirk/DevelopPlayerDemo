@@ -12,7 +12,7 @@
 
 @interface PKLayerVideoDecoder ()
 
-@property (nonatomic, assign) int format;
+@property (nonatomic, assign) CGSize size;
 @property (nonatomic, assign) double frameRate;
 @property (nonatomic, assign) double currentTime;
 
@@ -33,10 +33,10 @@
 
 #pragma mark - Initialization
 
-- (instancetype)initWithVideoURL:(NSURL *)videoURL format:(int)format {
+- (instancetype)initWithVideoURL:(NSURL *)videoURL size:(CGSize)size {
     self = [super init];
     if (self) {
-        _format = format;
+        _size = size;
         _lock = [[NSRecursiveLock alloc] init];
         
         NSDictionary *opts = @{
@@ -178,8 +178,13 @@
 - (void)initReader {
     AVAssetTrack *track = [[self.asset tracksWithMediaType:AVMediaTypeVideo] objectAtIndex:0];
 
-    NSDictionary *setting = [NSDictionary dictionaryWithObject:[NSNumber numberWithInt:self.format]
-                                                        forKey:(id)kCVPixelBufferPixelFormatTypeKey];
+    NSDictionary *setting = @{
+                               (id)kCVPixelBufferPixelFormatTypeKey:@(kCVPixelFormatType_32BGRA),
+                                         (id)kCVPixelBufferWidthKey:@(self.size.width),
+                                         (id)kCVPixelBufferHeightKey:@(self.size.height),
+                               };
+//    NSDictionary *setting = [NSDictionary dictionaryWithObject:[NSNumber numberWithInt:self.format]
+//                                                        forKey:(id)kCVPixelBufferPixelFormatTypeKey];
     self.assetReaderOutput = [[AVAssetReaderTrackOutput alloc] initWithTrack:track outputSettings:setting];
     self.frameRate = @(track.nominalFrameRate).doubleValue;
     

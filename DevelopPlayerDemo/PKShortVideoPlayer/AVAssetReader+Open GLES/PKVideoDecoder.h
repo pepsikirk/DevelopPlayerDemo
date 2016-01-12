@@ -21,21 +21,19 @@
 
 @interface PKVideoDecoder : NSObject
 
-@property (readwrite, retain) AVAsset *asset;
-@property(readwrite, retain) NSURL *url;
-@property(readonly, nonatomic) CGFloat progress;
-@property (readonly, nonatomic) AVAssetReader *assetReader;
+@property (nonatomic, strong) AVAsset *asset;
+@property (nonatomic, strong) NSURL *videoURL;
+@property (nonatomic, strong, readonly) AVAssetReader *assetReader;
+@property (nonatomic, assign, readonly) CGFloat progress;
 
-@property (readwrite, nonatomic, weak) id <PKVideoDecoderDelegate>delegate;
+@property (nonatomic, assign) BOOL keepLooping;
 
-- (id)initWithURL:(NSURL *)url;
-- (void)yuvConversionSetup;
+@property (nonatomic, weak) id <PKVideoDecoderDelegate>delegate;
 
-/// @name Movie processing
-- (BOOL)readNextVideoFrameFromOutput:(AVAssetReaderOutput *)readerVideoTrackOutput;
+- (instancetype)initWithVideoURL:(NSURL *)videoURL size:(CGSize)size;
+
 - (void)startProcessing;
 - (void)endProcessing;
 - (void)cancelProcessing;
-- (void)processMovieFrame:(CMSampleBufferRef)movieSampleBuffer;
 
 @end

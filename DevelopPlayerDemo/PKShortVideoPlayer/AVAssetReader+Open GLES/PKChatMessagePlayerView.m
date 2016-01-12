@@ -11,19 +11,17 @@
 #import "GPUImageContext.h"
 #import "PKColorConversion.h"
 
-@interface PKChatMessagePlayerView () <PKVideoDecoderDelegate>
-{
+@interface PKChatMessagePlayerView () <PKVideoDecoderDelegate> {
     GPUImageFramebuffer *inputFramebufferForDisplay;
-    GLuint displayRenderbuffer, displayFramebuffer;
-    
     GLProgram *displayProgram;
+
+    GLuint displayRenderbuffer, displayFramebuffer;
     GLint displayPositionAttribute, displayTextureCoordinateAttribute;
     GLint displayInputTextureUniform;
-    
-    CGSize inputImageSize;
     GLfloat imageVertices[8];
     GLfloat backgroundColorRed, backgroundColorGreen, backgroundColorBlue, backgroundColorAlpha;
     
+    CGSize inputImageSize;
     CGSize boundsSizeAtFrameBufferEpoch;
 }
 
@@ -40,8 +38,7 @@
 
 #pragma mark - Initialization
 
-+ (Class)layerClass
-{
++ (Class)layerClass {
     return [CAEAGLLayer class];
 }
 
@@ -56,19 +53,16 @@
         
         [self commonInit];
         
-        _decoder = [[PKVideoDecoder alloc] initWithURL:videoURL];
+        _decoder = [[PKVideoDecoder alloc] initWithVideoURL:videoURL size:frame.size];
         _decoder.delegate = self;
         [_decoder startProcessing];
-        
     }
     return self;
 }
 
-- (void)commonInit;
-{
+- (void)commonInit {
     // Set scaling to account for Retina display
-    if ([self respondsToSelector:@selector(setContentScaleFactor:)])
-    {
+    if ([self respondsToSelector:@selector(setContentScaleFactor:)]) {
         self.contentScaleFactor = [[UIScreen mainScreen] scale];
     }
     
@@ -82,13 +76,11 @@
         [GPUImageContext useImageProcessingContext];
         
         displayProgram = [[GPUImageContext sharedImageProcessingContext] programForVertexShaderString:kGPUImageVertexShaderString fragmentShaderString:kGPUImagePassthroughFragmentShaderString];
-        if (!displayProgram.initialized)
-        {
+        if (!displayProgram.initialized) {
             [displayProgram addAttribute:@"position"];
             [displayProgram addAttribute:@"inputTextureCoordinate"];
             
-            if (![displayProgram link])
-            {
+            if (![displayProgram link]) {
                 NSString *progLog = [displayProgram programLog];
                 NSLog(@"Program link log: %@", progLog);
                 NSString *fragLog = [displayProgram fragmentShaderLog];
@@ -129,12 +121,13 @@
     }
 }
 
-- (void)dealloc
-{
+- (void)dealloc {
     runSynchronouslyOnVideoProcessingQueue(^{
         [self destroyDisplayFramebuffer];
     });
 }
+
+#pragma mark - Public
 
 - (void)stop {
     [self.decoder cancelProcessing];
@@ -142,8 +135,7 @@
 
 #pragma mark Managing the display FBOs
 
-- (void)createDisplayFramebuffer;
-{
+- (void)createDisplayFramebuffer {
     [GPUImageContext useImageProcessingContext];
     
     glGenFramebuffers(1, &displayFramebuffer);
@@ -159,16 +151,13 @@
     glGetRenderbufferParameteriv(GL_RENDERBUFFER, GL_RENDERBUFFER_WIDTH, &backingWidth);
     glGetRenderbufferParameteriv(GL_RENDERBUFFER, GL_RENDERBUFFER_HEIGHT, &backingHeight);
     
-    if ( (backingWidth == 0) || (backingHeight == 0) )
-    {
+    if ( (backingWidth == 0) || (backingHeight == 0) ) {
         [self destroyDisplayFramebuffer];
         return;
     }
     
     _sizeInPixels.width = (CGFloat)backingWidth;
     _sizeInPixels.height = (CGFloat)backingHeight;
-    
-    //    NSLog(@"Backing width: %d, height: %d", backingWidth, backingHeight);
     
     glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_RENDERBUFFER, displayRenderbuffer);
     
@@ -179,27 +168,22 @@
     [self recalculateViewGeometry];
 }
 
-- (void)destroyDisplayFramebuffer;
-{
+- (void)destroyDisplayFramebuffer {
     [GPUImageContext useImageProcessingContext];
     
-    if (displayFramebuffer)
-    {
+    if (displayFramebuffer) {
         glDeleteFramebuffers(1, &displayFramebuffer);
         displayFramebuffer = 0;
     }
     
-    if (displayRenderbuffer)
-    {
+    if (displayRenderbuffer) {
         glDeleteRenderbuffers(1, &displayRenderbuffer);
         displayRenderbuffer = 0;
     }
 }
 
-- (void)setDisplayFramebuffer;
-{
-    if (!displayFramebuffer)
-    {
+- (void)setDisplayFramebuffer {
+    if (!displayFramebuffer) {
         [self createDisplayFramebuffer];
     }
     
@@ -208,30 +192,21 @@
     glViewport(0, 0, (GLint)_sizeInPixels.width, (GLint)_sizeInPixels.height);
 }
 
-- (void)presentFramebuffer;
-{
+- (void)presentFramebuffer {
     glBindRenderbuffer(GL_RENDERBUFFER, displayRenderbuffer);
     [[GPUImageContext sharedImageProcessingContext] presentBufferForDisplay];
 }
 
-#pragma mark -
 #pragma mark Handling fill mode
 
-- (void)recalculateViewGeometry;
-{
+- (void)recalculateViewGeometry {
     runSynchronouslyOnVideoProcessingQueue(^{
         CGFloat heightScaling, widthScaling;
-        
         CGSize currentViewSize = self.bounds.size;
-        
-        //    CGFloat imageAspectRatio = inputImageSize.width / inputImageSize.height;
-        //    CGFloat viewAspectRatio = currentViewSize.width / currentViewSize.height;
-        
         CGRect insetRect = AVMakeRectWithAspectRatioInsideRect(inputImageSize, self.bounds);
         
         widthScaling = insetRect.size.width / currentViewSize.width;
         heightScaling = insetRect.size.height / currentViewSize.height;
-
         
         imageVertices[0] = -widthScaling;
         imageVertices[1] = -heightScaling;
@@ -242,32 +217,16 @@
         imageVertices[6] = widthScaling;
         imageVertices[7] = heightScaling;
     });
-    
-    //    static const GLfloat imageVertices[] = {
-    //        -1.0f, -1.0f,
-    //        1.0f, -1.0f,
-    //        -1.0f,  1.0f,
-    //        1.0f,  1.0f,
-    //    };
 }
 
-- (void)setBackgroundColorRed:(GLfloat)redComponent green:(GLfloat)greenComponent blue:(GLfloat)blueComponent alpha:(GLfloat)alphaComponent;
-{
+- (void)setBackgroundColorRed:(GLfloat)redComponent green:(GLfloat)greenComponent blue:(GLfloat)blueComponent alpha:(GLfloat)alphaComponent; {
     backgroundColorRed = redComponent;
     backgroundColorGreen = greenComponent;
     backgroundColorBlue = blueComponent;
     backgroundColorAlpha = alphaComponent;
 }
 
-+ (const GLfloat *)textureCoordinatesForRotation:(GPUImageRotationMode)rotationMode;
-{
-    //    static const GLfloat noRotationTextureCoordinates[] = {
-    //        0.0f, 0.0f,
-    //        1.0f, 0.0f,
-    //        0.0f, 1.0f,
-    //        1.0f, 1.0f,
-    //    };
-    
++ (const GLfloat *)textureCoordinatesForRotation:(GPUImageRotationMode)rotationMode; {
     static const GLfloat noRotationTextureCoordinates[] = {
         0.0f, 1.0f,
         1.0f, 1.0f,
@@ -324,8 +283,7 @@
         0.0f, 1.0f,
     };
     
-    switch(rotationMode)
-    {
+    switch(rotationMode) {
         case kGPUImageNoRotation: return noRotationTextureCoordinates;
         case kGPUImageRotateLeft: return rotateLeftTextureCoordinates;
         case kGPUImageRotateRight: return rotateRightTextureCoordinates;
@@ -337,7 +295,9 @@
     }
 }
 
-#pragma mark -
+
+
+#pragma mark - PKVideoDecoderDelegate
 
 - (void)didDecodeInputFramebuffer:(GPUImageFramebuffer *)newInputFramebuffer inputSize:(CGSize)newSize frameTime:(CMTime)frameTime {
     inputFramebufferForDisplay = newInputFramebuffer;
@@ -379,34 +339,21 @@
     
 }
 
-- (CGSize)sizeInPixels;
-{
-    if (CGSizeEqualToSize(_sizeInPixels, CGSizeZero))
-    {
-        if ([self respondsToSelector:@selector(setContentScaleFactor:)])
-        {
+#pragma mark - Getter
+
+- (CGSize)sizeInPixels {
+    if (CGSizeEqualToSize(_sizeInPixels, CGSizeZero)) {
+        if ([self respondsToSelector:@selector(setContentScaleFactor:)]) {
             CGSize pointSize = self.bounds.size;
             return CGSizeMake(self.contentScaleFactor * pointSize.width, self.contentScaleFactor * pointSize.height);
         }
-        else
-        {
+        else {
             return self.bounds.size;
         }
     }
-    else
-    {
+    else {
         return _sizeInPixels;
     }
-}
-
-- (BOOL)shouldIgnoreUpdatesToThisTarget;
-{
-    return NO;
-}
-
-- (BOOL)wantsMonochromeInput;
-{
-    return NO;
 }
 
 @end

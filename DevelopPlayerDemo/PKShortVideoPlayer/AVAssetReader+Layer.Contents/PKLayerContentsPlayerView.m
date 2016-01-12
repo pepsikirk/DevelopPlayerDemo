@@ -32,7 +32,7 @@
         _videoURL = videoURL;
         _previewImage = previewImage;
         
-        _videoDecoder = [[PKLayerVideoDecoder alloc] initWithVideoURL:videoURL format:kCVPixelFormatType_32BGRA];
+        _videoDecoder = [[PKLayerVideoDecoder alloc] initWithVideoURL:videoURL size:self.bounds.size];
         _videoDecoder.delegate = self;
         _videoDecoder.loop = YES;
         [_videoDecoder start];

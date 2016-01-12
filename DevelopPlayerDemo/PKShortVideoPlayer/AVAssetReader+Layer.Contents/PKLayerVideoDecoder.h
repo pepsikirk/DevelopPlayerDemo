@@ -30,7 +30,7 @@
 
 
 
-- (instancetype)initWithVideoURL:(NSURL *)videoURL format:(int)format;
+- (instancetype)initWithVideoURL:(NSURL *)videoURL size:(CGSize)size;
 
 - (void)start;
 
