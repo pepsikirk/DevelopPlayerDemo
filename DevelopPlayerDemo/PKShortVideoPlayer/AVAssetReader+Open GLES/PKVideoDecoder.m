@@ -46,6 +46,7 @@
         _videoURL = videoURL;
         _size = size;
         _asset = nil;
+        _keepLooping = YES;
         [self yuvConversionSetup];
     }
     return self;
@@ -90,12 +91,19 @@
 - (AVAssetReader*)createAssetReader {
     NSError *error = nil;
     AVAssetReader *assetReader = [AVAssetReader assetReaderWithAsset:self.asset error:&error];
-    AVAssetTrack * assetTrack = [[self.asset tracksWithMediaType:AVMediaTypeVideo] objectAtIndex:0];
+    AVAssetTrack *assetTrack = [[self.asset tracksWithMediaType:AVMediaTypeVideo] objectAtIndex:0];
+    
+    CGSize outputSize = CGSizeZero;
+    if (self.size.width > assetTrack.naturalSize.width) {
+        outputSize = assetTrack.naturalSize;
+    } else {
+        outputSize= self.size;
+    }
     
     NSDictionary *outputSettings = @{
                                      (id)kCVPixelBufferPixelFormatTypeKey:@(kCVPixelFormatType_420YpCbCr8BiPlanarFullRange),
-                                     (id)kCVPixelBufferWidthKey:@(self.size.width),
-                                     (id)kCVPixelBufferHeightKey:@(self.size.height),
+                                     (id)kCVPixelBufferWidthKey:@(outputSize.width),
+                                     (id)kCVPixelBufferHeightKey:@(outputSize.height),
                                    };
     
     AVAssetReaderTrackOutput *readerVideoTrackOutput = [AVAssetReaderTrackOutput assetReaderTrackOutputWithTrack:assetTrack outputSettings:outputSettings];
@@ -106,7 +114,9 @@
 }
 
 - (void)processAsset {
-    self.reader = [self createAssetReader];
+    if (!self.reader) {
+        self.reader = [self createAssetReader];
+    }
     
     AVAssetReaderOutput *readerVideoTrackOutput = nil;
     
@@ -148,10 +158,15 @@
 #pragma mark - Public
 
 - (void)startProcessing {
-    self.keepLooping = YES;
-    
     previousFrameTime = kCMTimeZero;
     previousActualFrameTime = CFAbsoluteTimeGetCurrent();
+    
+    if (self.asset) {
+        dispatch_async(dispatch_get_global_queue(0, 0), ^{
+            [self processAsset];
+        });
+        return;
+    }
     
     NSDictionary *inputOptions = [NSDictionary dictionaryWithObject:[NSNumber numberWithBool:YES] forKey:AVURLAssetPreferPreciseDurationAndTimingKey];
     AVURLAsset *inputAsset = [[AVURLAsset alloc] initWithURL:self.videoURL options:inputOptions];
