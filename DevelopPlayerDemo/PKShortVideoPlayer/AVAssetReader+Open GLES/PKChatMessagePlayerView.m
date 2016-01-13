@@ -3,7 +3,7 @@
 //  DevelopPlayerDemo
 //
 //  Created by jiangxincai on 16/1/11.
-//  Copyright © 2016年 1yyg. All rights reserved.
+//  Copyright © 2016年 pepsikirk. All rights reserved.
 //
 
 #import "PKChatMessagePlayerView.h"
@@ -12,18 +12,18 @@
 #import "PKColorConversion.h"
 
 @interface PKChatMessagePlayerView () <PKVideoDecoderDelegate> {
-    GPUImageFramebuffer *inputFramebufferForDisplay;
-    GLProgram *displayProgram;
-
     GLuint displayRenderbuffer, displayFramebuffer;
     GLint displayPositionAttribute, displayTextureCoordinateAttribute;
     GLint displayInputTextureUniform;
     GLfloat imageVertices[8];
     GLfloat backgroundColorRed, backgroundColorGreen, backgroundColorBlue, backgroundColorAlpha;
-    
-    CGSize inputImageSize;
-    CGSize boundsSizeAtFrameBufferEpoch;
 }
+
+@property (nonatomic, strong) GLProgram *displayProgram;
+@property (nonatomic, strong) GPUImageFramebuffer *inputFramebufferForDisplay;
+
+@property (nonatomic, assign) CGSize inputImageSize;
+@property (nonatomic, assign) CGSize boundsSizeAtFrameBufferEpoch;
 
 @property (nonatomic, strong) NSURL *videoURL;
 @property (nonatomic, strong) UIImage *previewImage;
@@ -75,28 +75,28 @@
     runSynchronouslyOnVideoProcessingQueue(^{
         [GPUImageContext useImageProcessingContext];
         
-        displayProgram = [[GPUImageContext sharedImageProcessingContext] programForVertexShaderString:kGPUImageVertexShaderString fragmentShaderString:kGPUImagePassthroughFragmentShaderString];
-        if (!displayProgram.initialized) {
-            [displayProgram addAttribute:@"position"];
-            [displayProgram addAttribute:@"inputTextureCoordinate"];
+        self.displayProgram = [[GPUImageContext sharedImageProcessingContext] programForVertexShaderString:kGPUImageVertexShaderString fragmentShaderString:kGPUImagePassthroughFragmentShaderString];
+        if (!self.displayProgram.initialized) {
+            [self.displayProgram addAttribute:@"position"];
+            [self.displayProgram addAttribute:@"inputTextureCoordinate"];
             
-            if (![displayProgram link]) {
-                NSString *progLog = [displayProgram programLog];
+            if (![self.displayProgram link]) {
+                NSString *progLog = [self.displayProgram programLog];
                 NSLog(@"Program link log: %@", progLog);
-                NSString *fragLog = [displayProgram fragmentShaderLog];
+                NSString *fragLog = [self.displayProgram fragmentShaderLog];
                 NSLog(@"Fragment shader compile log: %@", fragLog);
-                NSString *vertLog = [displayProgram vertexShaderLog];
+                NSString *vertLog = [self.displayProgram vertexShaderLog];
                 NSLog(@"Vertex shader compile log: %@", vertLog);
-                displayProgram = nil;
+                self.displayProgram = nil;
                 NSAssert(NO, @"Filter shader link failed");
             }
         }
         
-        displayPositionAttribute = [displayProgram attributeIndex:@"position"];
-        displayTextureCoordinateAttribute = [displayProgram attributeIndex:@"inputTextureCoordinate"];
-        displayInputTextureUniform = [displayProgram uniformIndex:@"inputImageTexture"]; // This does assume a name of "inputTexture" for the fragment shader
+        displayPositionAttribute = [self.displayProgram attributeIndex:@"position"];
+        displayTextureCoordinateAttribute = [self.displayProgram attributeIndex:@"inputTextureCoordinate"];
+        displayInputTextureUniform = [self.displayProgram uniformIndex:@"inputImageTexture"]; // This does assume a name of "inputTexture" for the fragment shader
         
-        [GPUImageContext setActiveShaderProgram:displayProgram];
+        [GPUImageContext setActiveShaderProgram:self.displayProgram];
         glEnableVertexAttribArray(displayPositionAttribute);
         glEnableVertexAttribArray(displayTextureCoordinateAttribute);
         
@@ -110,7 +110,7 @@
     [super layoutSubviews];
     
     // The frame buffer needs to be trashed and re-created when the view size changes.
-    if (!CGSizeEqualToSize(self.bounds.size, boundsSizeAtFrameBufferEpoch) &&
+    if (!CGSizeEqualToSize(self.bounds.size, self.boundsSizeAtFrameBufferEpoch) &&
         !CGSizeEqualToSize(self.bounds.size, CGSizeZero)) {
         runSynchronouslyOnVideoProcessingQueue(^{
             [self destroyDisplayFramebuffer];
@@ -163,7 +163,7 @@
     
     __unused GLuint framebufferCreationStatus = glCheckFramebufferStatus(GL_FRAMEBUFFER);
     NSAssert(framebufferCreationStatus == GL_FRAMEBUFFER_COMPLETE, @"Failure with display framebuffer generation for display of size: %f, %f", self.bounds.size.width, self.bounds.size.height);
-    boundsSizeAtFrameBufferEpoch = self.bounds.size;
+    self.boundsSizeAtFrameBufferEpoch = self.bounds.size;
     
     [self recalculateViewGeometry];
 }
@@ -203,7 +203,7 @@
     runSynchronouslyOnVideoProcessingQueue(^{
         CGFloat heightScaling, widthScaling;
         CGSize currentViewSize = self.bounds.size;
-        CGRect insetRect = AVMakeRectWithAspectRatioInsideRect(inputImageSize, self.bounds);
+        CGRect insetRect = AVMakeRectWithAspectRatioInsideRect(self.inputImageSize, self.bounds);
         
         widthScaling = insetRect.size.width / currentViewSize.width;
         heightScaling = insetRect.size.height / currentViewSize.height;
@@ -300,28 +300,27 @@
 #pragma mark - PKVideoDecoderDelegate
 
 - (void)didDecodeInputFramebuffer:(GPUImageFramebuffer *)newInputFramebuffer inputSize:(CGSize)newSize frameTime:(CMTime)frameTime {
-    inputFramebufferForDisplay = newInputFramebuffer;
-    [inputFramebufferForDisplay lock];
+    self.inputFramebufferForDisplay = newInputFramebuffer;
+    [self.inputFramebufferForDisplay lock];
     
     runSynchronouslyOnVideoProcessingQueue(^{
         CGSize rotatedSize = newSize;
         
-        if (!CGSizeEqualToSize(inputImageSize, rotatedSize))
-        {
-            inputImageSize = rotatedSize;
+        if (!CGSizeEqualToSize(self.inputImageSize, rotatedSize)) {
+            self.inputImageSize = rotatedSize;
             [self recalculateViewGeometry];
         }
     });
     
     runSynchronouslyOnVideoProcessingQueue(^{
-        [GPUImageContext setActiveShaderProgram:displayProgram];
+        [GPUImageContext setActiveShaderProgram:self.displayProgram];
         [self setDisplayFramebuffer];
         
         glClearColor(backgroundColorRed, backgroundColorGreen, backgroundColorBlue, backgroundColorAlpha);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         
         glActiveTexture(GL_TEXTURE4);
-        glBindTexture(GL_TEXTURE_2D, [inputFramebufferForDisplay texture]);
+        glBindTexture(GL_TEXTURE_2D, [self.inputFramebufferForDisplay texture]);
         glUniform1i(displayInputTextureUniform, 4);
         
         glVertexAttribPointer(displayPositionAttribute, 2, GL_FLOAT, 0, 0, imageVertices);
@@ -330,8 +329,8 @@
         glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
         
         [self presentFramebuffer];
-        [inputFramebufferForDisplay unlock];
-        inputFramebufferForDisplay = nil;
+        [self.inputFramebufferForDisplay unlock];
+        self.inputFramebufferForDisplay = nil;
     });
 }
 

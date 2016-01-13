@@ -107,12 +107,12 @@
 			isa = PBXGroup;
 			children = (
 				887C3E141C44D586008C34FF /* GPUImage */,
+				8870F96D1C43A2730039B93C /* PKColorConversion.h */,
+				8870F96E1C43A2840039B93C /* PKColorConversion.m */,
 				884C0B561C434CA5008AABAA /* PKChatMessagePlayerView.h */,
 				884C0B571C434CA5008AABAA /* PKChatMessagePlayerView.m */,
 				884C0B751C438688008AABAA /* PKVideoDecoder.h */,
 				884C0B761C438688008AABAA /* PKVideoDecoder.m */,
-				8870F96D1C43A2730039B93C /* PKColorConversion.h */,
-				8870F96E1C43A2840039B93C /* PKColorConversion.m */,
 			);
 			name = "AVAssetReader+Open GLES";
 			sourceTree = "<group>";
@@ -399,7 +399,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = DevelopPlayerDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.1yyg.DevelopPlayerDemo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.pepsikirk.DevelopPlayerDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -410,7 +410,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = DevelopPlayerDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.1yyg.DevelopPlayerDemo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.pepsikirk.DevelopPlayerDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
