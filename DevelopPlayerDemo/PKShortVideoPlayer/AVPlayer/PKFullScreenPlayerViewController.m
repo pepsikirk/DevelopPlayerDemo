@@ -90,7 +90,11 @@
     
     [self.navigationController.view.layer addAnimation:animation forKey:nil];
     
-    [self.navigationController popViewControllerAnimated:NO];
+    if (self.navigationController) {
+        [self.navigationController popViewControllerAnimated:NO];
+    } else {
+        [self dismissViewControllerAnimated:YES completion:NULL];
+    }
 }
 
 @end
