@@ -9,8 +9,12 @@
 #import <UIKit/UIKit.h>
 @class AVAsset;
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface UIImage (PKShortVideoPlayer)
 
 + (UIImage *)pk_previewImageWithVideoURL:(NSURL *)videoURL;
 
 @end
+
+NS_ASSUME_NONNULL_END

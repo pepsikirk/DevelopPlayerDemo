@@ -14,7 +14,7 @@
 
 @interface ViewController ()
 
-@property (nonatomic, strong) NSURL *URL;
+@property (nonatomic, strong) NSString *videoPath;
 @property (nonatomic, strong) UIImage *image;
 
 @end
@@ -24,9 +24,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    self.URL = [[NSBundle mainBundle] URLForResource:@"Cat" withExtension:@"mp4"];
+    self.videoPath = [[NSBundle mainBundle] pathForResource:@"Cat" ofType:@"mp4"];
     
-    self.image = [UIImage pk_previewImageWithVideoURL:self.URL];
+    self.image = [UIImage pk_previewImageWithVideoURL:[NSURL fileURLWithPath:self.videoPath]];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -39,7 +39,7 @@
         return;
     }
     
-    PKFullScreenPlayerViewController *playerViewController = [[PKFullScreenPlayerViewController alloc] initWithVideoURL:self.URL previewImage:self.image];
+    PKFullScreenPlayerViewController *playerViewController = [[PKFullScreenPlayerViewController alloc] initWithVideoPath:self.videoPath previewImage:self.image];
     
     CATransition *animation = [CATransition animation];
     [animation setDuration:0.25];
@@ -57,11 +57,11 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"segueLayerContents"]) {
         PKLayerContentsViewController *vc = segue.destinationViewController;
-        vc.URL = self.URL;
+        vc.videoPath = self.videoPath;
         vc.image = self.image;
     } else if ([segue.identifier isEqualToString:@"segueOpenGLES"]) {
         PKOpenGLESViewController *vc = segue.destinationViewController;
-        vc.URL = self.URL;
+        vc.videoPath = self.videoPath;
         vc.image = self.image;
     }
 }

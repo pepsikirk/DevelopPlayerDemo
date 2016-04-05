@@ -13,7 +13,7 @@
 
 @property (nonatomic, strong) PKFullScreenPlayerView *playerView;
 
-@property (nonatomic, strong) NSURL *videoURL;
+@property (nonatomic, strong) NSString *videoPath;
 @property (nonatomic, strong) UIImage *image;
 
 @end
@@ -22,13 +22,13 @@
 
 #pragma mark - Initialization
 
-- (instancetype)initWithVideoURL:(NSURL *)videoURL previewImage:(UIImage *)previewImage {
-    NSParameterAssert(videoURL != nil);
+- (instancetype)initWithVideoPath:(NSString *)videoPath previewImage:(UIImage *)previewImage {
+    NSParameterAssert(videoPath != nil);
     NSParameterAssert(previewImage != nil);
 
     self = [super init];
     if (self) {
-        _videoURL = videoURL;
+        _videoPath = videoPath;
         _image = previewImage;
     }
     return self;
@@ -45,7 +45,7 @@
     CGSize viewSize = self.view.bounds.size;
     CGSize imageSize = self.image.size;
     
-    self.playerView = [[PKFullScreenPlayerView alloc] initWithFrame:CGRectMake(0, 0, viewSize.width, viewSize.width* (imageSize.height/imageSize.width) ) videoURL:self.videoURL previewImage:self.image];
+    self.playerView = [[PKFullScreenPlayerView alloc] initWithFrame:CGRectMake(0, 0, viewSize.width, viewSize.width* (imageSize.height/imageSize.width) ) videoPath:self.videoPath previewImage:self.image];
     self.playerView.center = self.view.center;
     
     [self.view addSubview:self.playerView];

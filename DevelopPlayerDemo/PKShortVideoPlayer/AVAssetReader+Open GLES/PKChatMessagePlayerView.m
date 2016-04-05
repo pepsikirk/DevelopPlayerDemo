@@ -25,7 +25,7 @@
 @property (nonatomic, assign) CGSize inputImageSize;
 @property (nonatomic, assign) CGSize boundsSizeAtFrameBufferEpoch;
 
-@property (nonatomic, strong) NSURL *videoURL;
+@property (nonatomic, strong) NSString *videoPath;
 @property (nonatomic, strong) UIImage *previewImage;
 
 @property (nonatomic, readwrite) CGSize sizeInPixels;
@@ -42,18 +42,18 @@
     return [CAEAGLLayer class];
 }
 
-- (instancetype)initWithFrame:(CGRect)frame videoURL:(NSURL *)videoURL previewImage:(UIImage *)previewImage {
-    NSParameterAssert(videoURL != nil);
+- (instancetype)initWithFrame:(CGRect)frame videoPath:(NSString *)videoPath previewImage:(UIImage *)previewImage {
+    NSParameterAssert(videoPath != nil);
     NSParameterAssert(previewImage != nil);
     
     self = [super initWithFrame:frame];
     if (self) {
-        _videoURL = videoURL;
+        _videoPath = videoPath;
         _previewImage = previewImage;
         
         [self commonInit];
         
-        _decoder = [[PKVideoDecoder alloc] initWithVideoURL:videoURL size:frame.size];
+        _decoder = [[PKVideoDecoder alloc] initWithVideoPath:videoPath size:frame.size];
         _decoder.delegate = self;
         [_decoder startProcessing];
     }

@@ -10,7 +10,7 @@
 
 @interface PKOpenGLESViewController : UIViewController
 
-@property (nonatomic, strong) NSURL *URL;
+@property (nonatomic, strong) NSString *videoPath;
 @property (nonatomic, strong) UIImage *image;
 
 @end

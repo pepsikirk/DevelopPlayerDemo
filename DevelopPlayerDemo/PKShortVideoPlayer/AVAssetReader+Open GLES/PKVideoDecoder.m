@@ -40,10 +40,10 @@
 
 #pragma mark - Initialization
 
-- (instancetype)initWithVideoURL:(NSURL *)videoURL size:(CGSize)size {
+- (instancetype)initWithVideoPath:(NSString *)videoPath size:(CGSize)size {
     self = [super init];
     if (self) {
-        _videoURL = videoURL;
+        _videoPath = videoPath;
         _size = size;
         _asset = nil;
         _keepLooping = YES;
@@ -127,7 +127,7 @@
     }
     
     if ([self.reader startReading] == NO) {
-        NSLog(@"Error reading from file at URL: %@", self.videoURL);
+        NSLog(@"Error reading from file at Path: %@", self.videoPath);
         return;
     }
     
@@ -169,7 +169,7 @@
     }
     
     NSDictionary *inputOptions = [NSDictionary dictionaryWithObject:[NSNumber numberWithBool:YES] forKey:AVURLAssetPreferPreciseDurationAndTimingKey];
-    AVURLAsset *inputAsset = [[AVURLAsset alloc] initWithURL:self.videoURL options:inputOptions];
+    AVURLAsset *inputAsset = [[AVURLAsset alloc] initWithURL:[NSURL fileURLWithPath:self.videoPath] options:inputOptions];
     
     PKVideoDecoder __block *blockSelf = self;
     

@@ -12,7 +12,7 @@
 
 @interface PKLayerContentsPlayerView () <PKVideoDecoderDelegate>
 
-@property (nonatomic, strong) NSURL *videoURL;
+@property (nonatomic, strong) NSString *videoPath;
 @property (nonatomic, strong) UIImage *previewImage;
 
 @property (nonatomic, strong) PKLayerVideoDecoder *videoDecoder;
@@ -23,16 +23,16 @@
 
 #pragma mark - Initialization
 
-- (instancetype)initWithFrame:(CGRect)frame videoURL:(NSURL *)videoURL previewImage:(UIImage *)previewImage {
-    NSParameterAssert(videoURL != nil);
+- (instancetype)initWithFrame:(CGRect)frame videoPath:(NSString *)videoPath previewImage:(UIImage *)previewImage {
+    NSParameterAssert(videoPath != nil);
     NSParameterAssert(previewImage != nil);
     
     self = [super initWithFrame:frame];
     if (self) {
-        _videoURL = videoURL;
+        _videoPath = videoPath;
         _previewImage = previewImage;
         
-        _videoDecoder = [[PKLayerVideoDecoder alloc] initWithVideoURL:videoURL size:self.bounds.size];
+        _videoDecoder = [[PKLayerVideoDecoder alloc] initWithVideoPath:videoPath size:self.bounds.size];
         _videoDecoder.delegate = self;
         _videoDecoder.loop = YES;
         [_videoDecoder start];

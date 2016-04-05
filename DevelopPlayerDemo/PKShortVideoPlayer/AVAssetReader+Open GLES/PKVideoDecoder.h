@@ -11,6 +11,8 @@
 
 @class GPUImageFramebuffer;
 
+NS_ASSUME_NONNULL_BEGIN
+
 @protocol PKVideoDecoderDelegate <NSObject>
 
 - (void)didCompletePlayingMovie;
@@ -22,7 +24,7 @@
 @interface PKVideoDecoder : NSObject
 
 @property (nonatomic, strong) AVAsset *asset;
-@property (nonatomic, strong) NSURL *videoURL;
+@property (nonatomic, strong) NSString *videoPath;
 @property (nonatomic, strong, readonly) AVAssetReader *assetReader;
 @property (nonatomic, assign, readonly) CGFloat progress;
 
@@ -30,10 +32,13 @@
 
 @property (nonatomic, weak) id <PKVideoDecoderDelegate>delegate;
 
-- (instancetype)initWithVideoURL:(NSURL *)videoURL size:(CGSize)size;
+- (instancetype)initWithVideoPath:(NSString *)videoPath size:(CGSize)size;
 
 - (void)startProcessing;
 - (void)endProcessing;
 - (void)cancelProcessing;
 
 @end
+
+NS_ASSUME_NONNULL_END
+

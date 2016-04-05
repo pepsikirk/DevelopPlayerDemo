@@ -33,7 +33,7 @@
 
 #pragma mark - Initialization
 
-- (instancetype)initWithVideoURL:(NSURL *)videoURL size:(CGSize)size {
+- (instancetype)initWithVideoPath:(NSString *)videoPath size:(CGSize)size {
     self = [super init];
     if (self) {
         _size = size;
@@ -42,7 +42,7 @@
         NSDictionary *opts = @{
                                AVURLAssetPreferPreciseDurationAndTimingKey : @YES
                                };
-        _asset = [[AVURLAsset alloc] initWithURL:videoURL options:opts];
+        _asset = [[AVURLAsset alloc] initWithURL:[NSURL fileURLWithPath:videoPath] options:opts];
         _frameRate = 30;
     }
     return self;

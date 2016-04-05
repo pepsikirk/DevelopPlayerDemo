@@ -23,14 +23,14 @@
 
 @interface PKLayerVideoDecoder : NSObject
 
-@property (nonatomic, assign , readonly) BOOL isRunning, isFinished;
+@property (nonatomic, assign, readonly) BOOL isRunning, isFinished;
 @property (nonatomic, assign) BOOL loop;
 
-@property (nonatomic, weak)   id<PKVideoDecoderDelegate> delegate;
+@property (nonatomic, weak) id<PKVideoDecoderDelegate> delegate;
 
 
 
-- (instancetype)initWithVideoURL:(NSURL *)videoURL size:(CGSize)size;
+- (instancetype)initWithVideoPath:(NSString *)videoPath size:(CGSize)size;
 
 - (void)start;
 
