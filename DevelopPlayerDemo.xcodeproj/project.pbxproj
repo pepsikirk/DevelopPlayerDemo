@@ -10,16 +10,9 @@
 		883CB9B31C3A7935004D37C6 /* UIImage+PKShortVideoPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 883CB9B21C3A7935004D37C6 /* UIImage+PKShortVideoPlayer.m */; };
 		884C0B541C434C9A008AABAA /* PKLayerContentsPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 884C0B511C434C9A008AABAA /* PKLayerContentsPlayerView.m */; };
 		884C0B551C434C9A008AABAA /* PKLayerVideoDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 884C0B531C434C9A008AABAA /* PKLayerVideoDecoder.m */; };
-		884C0B581C434CA5008AABAA /* PKChatMessagePlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 884C0B571C434CA5008AABAA /* PKChatMessagePlayerView.m */; };
 		884C0B5E1C434D20008AABAA /* PKFullScreenPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 884C0B5B1C434D20008AABAA /* PKFullScreenPlayerView.m */; };
 		884C0B5F1C434D20008AABAA /* PKFullScreenPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 884C0B5D1C434D20008AABAA /* PKFullScreenPlayerViewController.m */; };
 		884C0B621C4353DC008AABAA /* PKOpenGLESViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 884C0B611C4353DC008AABAA /* PKOpenGLESViewController.m */; };
-		884C0B771C438688008AABAA /* PKVideoDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 884C0B761C438688008AABAA /* PKVideoDecoder.m */; };
-		8870F96F1C43A2840039B93C /* PKColorConversion.m in Sources */ = {isa = PBXBuildFile; fileRef = 8870F96E1C43A2840039B93C /* PKColorConversion.m */; };
-		887C3E1F1C450634008C34FF /* GLProgram.m in Sources */ = {isa = PBXBuildFile; fileRef = 887C3E181C450634008C34FF /* GLProgram.m */; };
-		887C3E201C450634008C34FF /* GPUImageContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 887C3E1A1C450634008C34FF /* GPUImageContext.m */; };
-		887C3E211C450634008C34FF /* GPUImageFramebuffer.m in Sources */ = {isa = PBXBuildFile; fileRef = 887C3E1C1C450634008C34FF /* GPUImageFramebuffer.m */; };
-		887C3E221C450634008C34FF /* GPUImageFramebufferCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 887C3E1E1C450634008C34FF /* GPUImageFramebufferCache.m */; };
 		88DDEC341C3A568F00FA04E4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 88DDEC331C3A568F00FA04E4 /* main.m */; };
 		88DDEC371C3A568F00FA04E4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 88DDEC361C3A568F00FA04E4 /* AppDelegate.m */; };
 		88DDEC3A1C3A568F00FA04E4 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88DDEC391C3A568F00FA04E4 /* ViewController.m */; };
@@ -28,6 +21,13 @@
 		88DDEC421C3A568F00FA04E4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88DDEC401C3A568F00FA04E4 /* LaunchScreen.storyboard */; };
 		88DDEC4A1C3A576A00FA04E4 /* Cat.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 88DDEC491C3A576A00FA04E4 /* Cat.mp4 */; };
 		88DDEC501C3A5D2100FA04E4 /* PKLayerContentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88DDEC4F1C3A5D2100FA04E4 /* PKLayerContentsViewController.m */; };
+		AE4066CE1D30E017002273A8 /* GLProgram.m in Sources */ = {isa = PBXBuildFile; fileRef = AE4066C11D30E017002273A8 /* GLProgram.m */; };
+		AE4066CF1D30E017002273A8 /* GPUImageContext.m in Sources */ = {isa = PBXBuildFile; fileRef = AE4066C31D30E017002273A8 /* GPUImageContext.m */; };
+		AE4066D01D30E017002273A8 /* GPUImageFramebuffer.m in Sources */ = {isa = PBXBuildFile; fileRef = AE4066C51D30E017002273A8 /* GPUImageFramebuffer.m */; };
+		AE4066D11D30E017002273A8 /* GPUImageFramebufferCache.m in Sources */ = {isa = PBXBuildFile; fileRef = AE4066C71D30E017002273A8 /* GPUImageFramebufferCache.m */; };
+		AE4066D21D30E017002273A8 /* PKChatMessagePlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = AE4066C91D30E017002273A8 /* PKChatMessagePlayerView.m */; };
+		AE4066D31D30E017002273A8 /* PKColorConversion.m in Sources */ = {isa = PBXBuildFile; fileRef = AE4066CB1D30E017002273A8 /* PKColorConversion.m */; };
+		AE4066D41D30E017002273A8 /* PKVideoDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = AE4066CD1D30E017002273A8 /* PKVideoDecoder.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,26 +37,12 @@
 		884C0B511C434C9A008AABAA /* PKLayerContentsPlayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PKLayerContentsPlayerView.m; path = "PKShortVideoPlayer/AVAssetReader+Layer.Contents/PKLayerContentsPlayerView.m"; sourceTree = "<group>"; };
 		884C0B521C434C9A008AABAA /* PKLayerVideoDecoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKLayerVideoDecoder.h; path = "PKShortVideoPlayer/AVAssetReader+Layer.Contents/PKLayerVideoDecoder.h"; sourceTree = "<group>"; };
 		884C0B531C434C9A008AABAA /* PKLayerVideoDecoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PKLayerVideoDecoder.m; path = "PKShortVideoPlayer/AVAssetReader+Layer.Contents/PKLayerVideoDecoder.m"; sourceTree = "<group>"; };
-		884C0B561C434CA5008AABAA /* PKChatMessagePlayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKChatMessagePlayerView.h; path = "PKShortVideoPlayer/AVAssetReader+Open GLES/PKChatMessagePlayerView.h"; sourceTree = "<group>"; };
-		884C0B571C434CA5008AABAA /* PKChatMessagePlayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PKChatMessagePlayerView.m; path = "PKShortVideoPlayer/AVAssetReader+Open GLES/PKChatMessagePlayerView.m"; sourceTree = "<group>"; };
 		884C0B5A1C434D20008AABAA /* PKFullScreenPlayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKFullScreenPlayerView.h; path = PKShortVideoPlayer/AVPlayer/PKFullScreenPlayerView.h; sourceTree = "<group>"; };
 		884C0B5B1C434D20008AABAA /* PKFullScreenPlayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PKFullScreenPlayerView.m; path = PKShortVideoPlayer/AVPlayer/PKFullScreenPlayerView.m; sourceTree = "<group>"; };
 		884C0B5C1C434D20008AABAA /* PKFullScreenPlayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKFullScreenPlayerViewController.h; path = PKShortVideoPlayer/AVPlayer/PKFullScreenPlayerViewController.h; sourceTree = "<group>"; };
 		884C0B5D1C434D20008AABAA /* PKFullScreenPlayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PKFullScreenPlayerViewController.m; path = PKShortVideoPlayer/AVPlayer/PKFullScreenPlayerViewController.m; sourceTree = "<group>"; };
 		884C0B601C4353DC008AABAA /* PKOpenGLESViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PKOpenGLESViewController.h; sourceTree = "<group>"; };
 		884C0B611C4353DC008AABAA /* PKOpenGLESViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PKOpenGLESViewController.m; sourceTree = "<group>"; };
-		884C0B751C438688008AABAA /* PKVideoDecoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKVideoDecoder.h; path = "PKShortVideoPlayer/AVAssetReader+Open GLES/PKVideoDecoder.h"; sourceTree = "<group>"; };
-		884C0B761C438688008AABAA /* PKVideoDecoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PKVideoDecoder.m; path = "PKShortVideoPlayer/AVAssetReader+Open GLES/PKVideoDecoder.m"; sourceTree = "<group>"; };
-		8870F96D1C43A2730039B93C /* PKColorConversion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKColorConversion.h; path = "PKShortVideoPlayer/AVAssetReader+Open GLES/PKColorConversion.h"; sourceTree = "<group>"; };
-		8870F96E1C43A2840039B93C /* PKColorConversion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PKColorConversion.m; path = "PKShortVideoPlayer/AVAssetReader+Open GLES/PKColorConversion.m"; sourceTree = "<group>"; };
-		887C3E171C450634008C34FF /* GLProgram.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GLProgram.h; path = "PKShortVideoPlayer/AVAssetReader+Open GLES/GPUImage/GLProgram.h"; sourceTree = "<group>"; };
-		887C3E181C450634008C34FF /* GLProgram.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GLProgram.m; path = "PKShortVideoPlayer/AVAssetReader+Open GLES/GPUImage/GLProgram.m"; sourceTree = "<group>"; };
-		887C3E191C450634008C34FF /* GPUImageContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GPUImageContext.h; path = "PKShortVideoPlayer/AVAssetReader+Open GLES/GPUImage/GPUImageContext.h"; sourceTree = "<group>"; };
-		887C3E1A1C450634008C34FF /* GPUImageContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GPUImageContext.m; path = "PKShortVideoPlayer/AVAssetReader+Open GLES/GPUImage/GPUImageContext.m"; sourceTree = "<group>"; };
-		887C3E1B1C450634008C34FF /* GPUImageFramebuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GPUImageFramebuffer.h; path = "PKShortVideoPlayer/AVAssetReader+Open GLES/GPUImage/GPUImageFramebuffer.h"; sourceTree = "<group>"; };
-		887C3E1C1C450634008C34FF /* GPUImageFramebuffer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GPUImageFramebuffer.m; path = "PKShortVideoPlayer/AVAssetReader+Open GLES/GPUImage/GPUImageFramebuffer.m"; sourceTree = "<group>"; };
-		887C3E1D1C450634008C34FF /* GPUImageFramebufferCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GPUImageFramebufferCache.h; path = "PKShortVideoPlayer/AVAssetReader+Open GLES/GPUImage/GPUImageFramebufferCache.h"; sourceTree = "<group>"; };
-		887C3E1E1C450634008C34FF /* GPUImageFramebufferCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GPUImageFramebufferCache.m; path = "PKShortVideoPlayer/AVAssetReader+Open GLES/GPUImage/GPUImageFramebufferCache.m"; sourceTree = "<group>"; };
 		88DDEC2F1C3A568F00FA04E4 /* DevelopPlayerDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DevelopPlayerDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		88DDEC331C3A568F00FA04E4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		88DDEC351C3A568F00FA04E4 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -70,6 +56,20 @@
 		88DDEC491C3A576A00FA04E4 /* Cat.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = Cat.mp4; sourceTree = "<group>"; };
 		88DDEC4E1C3A5D2100FA04E4 /* PKLayerContentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PKLayerContentsViewController.h; sourceTree = "<group>"; };
 		88DDEC4F1C3A5D2100FA04E4 /* PKLayerContentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PKLayerContentsViewController.m; sourceTree = "<group>"; };
+		AE4066C01D30E017002273A8 /* GLProgram.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLProgram.h; sourceTree = "<group>"; };
+		AE4066C11D30E017002273A8 /* GLProgram.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLProgram.m; sourceTree = "<group>"; };
+		AE4066C21D30E017002273A8 /* GPUImageContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPUImageContext.h; sourceTree = "<group>"; };
+		AE4066C31D30E017002273A8 /* GPUImageContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPUImageContext.m; sourceTree = "<group>"; };
+		AE4066C41D30E017002273A8 /* GPUImageFramebuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPUImageFramebuffer.h; sourceTree = "<group>"; };
+		AE4066C51D30E017002273A8 /* GPUImageFramebuffer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPUImageFramebuffer.m; sourceTree = "<group>"; };
+		AE4066C61D30E017002273A8 /* GPUImageFramebufferCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPUImageFramebufferCache.h; sourceTree = "<group>"; };
+		AE4066C71D30E017002273A8 /* GPUImageFramebufferCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPUImageFramebufferCache.m; sourceTree = "<group>"; };
+		AE4066C81D30E017002273A8 /* PKChatMessagePlayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PKChatMessagePlayerView.h; sourceTree = "<group>"; };
+		AE4066C91D30E017002273A8 /* PKChatMessagePlayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PKChatMessagePlayerView.m; sourceTree = "<group>"; };
+		AE4066CA1D30E017002273A8 /* PKColorConversion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PKColorConversion.h; sourceTree = "<group>"; };
+		AE4066CB1D30E017002273A8 /* PKColorConversion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PKColorConversion.m; sourceTree = "<group>"; };
+		AE4066CC1D30E017002273A8 /* PKVideoDecoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PKVideoDecoder.h; sourceTree = "<group>"; };
+		AE4066CD1D30E017002273A8 /* PKVideoDecoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PKVideoDecoder.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,20 +103,6 @@
 			name = "AVAssetReader+Layer.Contents";
 			sourceTree = "<group>";
 		};
-		884C0B4C1C434C1A008AABAA /* AVAssetReader+Open GLES */ = {
-			isa = PBXGroup;
-			children = (
-				887C3E141C44D586008C34FF /* GPUImage */,
-				8870F96D1C43A2730039B93C /* PKColorConversion.h */,
-				8870F96E1C43A2840039B93C /* PKColorConversion.m */,
-				884C0B561C434CA5008AABAA /* PKChatMessagePlayerView.h */,
-				884C0B571C434CA5008AABAA /* PKChatMessagePlayerView.m */,
-				884C0B751C438688008AABAA /* PKVideoDecoder.h */,
-				884C0B761C438688008AABAA /* PKVideoDecoder.m */,
-			);
-			name = "AVAssetReader+Open GLES";
-			sourceTree = "<group>";
-		};
 		884C0B591C434CFE008AABAA /* AVPlayer */ = {
 			isa = PBXGroup;
 			children = (
@@ -126,21 +112,6 @@
 				884C0B5D1C434D20008AABAA /* PKFullScreenPlayerViewController.m */,
 			);
 			name = AVPlayer;
-			sourceTree = "<group>";
-		};
-		887C3E141C44D586008C34FF /* GPUImage */ = {
-			isa = PBXGroup;
-			children = (
-				887C3E171C450634008C34FF /* GLProgram.h */,
-				887C3E181C450634008C34FF /* GLProgram.m */,
-				887C3E191C450634008C34FF /* GPUImageContext.h */,
-				887C3E1A1C450634008C34FF /* GPUImageContext.m */,
-				887C3E1B1C450634008C34FF /* GPUImageFramebuffer.h */,
-				887C3E1C1C450634008C34FF /* GPUImageFramebuffer.m */,
-				887C3E1D1C450634008C34FF /* GPUImageFramebufferCache.h */,
-				887C3E1E1C450634008C34FF /* GPUImageFramebufferCache.m */,
-			);
-			name = GPUImage;
 			sourceTree = "<group>";
 		};
 		88DDEC261C3A568F00FA04E4 = {
@@ -195,9 +166,39 @@
 				883CB9B01C3A7869004D37C6 /* Categories */,
 				884C0B591C434CFE008AABAA /* AVPlayer */,
 				884C0B4B1C434B39008AABAA /* AVAssetReader+Layer.Contents */,
-				884C0B4C1C434C1A008AABAA /* AVAssetReader+Open GLES */,
+				AE4066BE1D30E017002273A8 /* AVAssetReader+OpenGL ES */,
 			);
 			name = PKShortVideoPlayer;
+			sourceTree = "<group>";
+		};
+		AE4066BE1D30E017002273A8 /* AVAssetReader+OpenGL ES */ = {
+			isa = PBXGroup;
+			children = (
+				AE4066BF1D30E017002273A8 /* GPUImage */,
+				AE4066C81D30E017002273A8 /* PKChatMessagePlayerView.h */,
+				AE4066C91D30E017002273A8 /* PKChatMessagePlayerView.m */,
+				AE4066CA1D30E017002273A8 /* PKColorConversion.h */,
+				AE4066CB1D30E017002273A8 /* PKColorConversion.m */,
+				AE4066CC1D30E017002273A8 /* PKVideoDecoder.h */,
+				AE4066CD1D30E017002273A8 /* PKVideoDecoder.m */,
+			);
+			name = "AVAssetReader+OpenGL ES";
+			path = "PKShortVideoPlayer/AVAssetReader+OpenGL ES";
+			sourceTree = "<group>";
+		};
+		AE4066BF1D30E017002273A8 /* GPUImage */ = {
+			isa = PBXGroup;
+			children = (
+				AE4066C01D30E017002273A8 /* GLProgram.h */,
+				AE4066C11D30E017002273A8 /* GLProgram.m */,
+				AE4066C21D30E017002273A8 /* GPUImageContext.h */,
+				AE4066C31D30E017002273A8 /* GPUImageContext.m */,
+				AE4066C41D30E017002273A8 /* GPUImageFramebuffer.h */,
+				AE4066C51D30E017002273A8 /* GPUImageFramebuffer.m */,
+				AE4066C61D30E017002273A8 /* GPUImageFramebufferCache.h */,
+				AE4066C71D30E017002273A8 /* GPUImageFramebufferCache.m */,
+			);
+			path = GPUImage;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -271,23 +272,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				887C3E211C450634008C34FF /* GPUImageFramebuffer.m in Sources */,
-				884C0B581C434CA5008AABAA /* PKChatMessagePlayerView.m in Sources */,
-				887C3E221C450634008C34FF /* GPUImageFramebufferCache.m in Sources */,
 				884C0B5F1C434D20008AABAA /* PKFullScreenPlayerViewController.m in Sources */,
 				88DDEC3A1C3A568F00FA04E4 /* ViewController.m in Sources */,
-				884C0B771C438688008AABAA /* PKVideoDecoder.m in Sources */,
 				88DDEC371C3A568F00FA04E4 /* AppDelegate.m in Sources */,
-				887C3E1F1C450634008C34FF /* GLProgram.m in Sources */,
 				884C0B541C434C9A008AABAA /* PKLayerContentsPlayerView.m in Sources */,
+				AE4066CF1D30E017002273A8 /* GPUImageContext.m in Sources */,
+				AE4066D21D30E017002273A8 /* PKChatMessagePlayerView.m in Sources */,
+				AE4066CE1D30E017002273A8 /* GLProgram.m in Sources */,
 				883CB9B31C3A7935004D37C6 /* UIImage+PKShortVideoPlayer.m in Sources */,
 				884C0B5E1C434D20008AABAA /* PKFullScreenPlayerView.m in Sources */,
 				884C0B621C4353DC008AABAA /* PKOpenGLESViewController.m in Sources */,
-				887C3E201C450634008C34FF /* GPUImageContext.m in Sources */,
+				AE4066D11D30E017002273A8 /* GPUImageFramebufferCache.m in Sources */,
 				88DDEC501C3A5D2100FA04E4 /* PKLayerContentsViewController.m in Sources */,
+				AE4066D41D30E017002273A8 /* PKVideoDecoder.m in Sources */,
 				884C0B551C434C9A008AABAA /* PKLayerVideoDecoder.m in Sources */,
 				88DDEC341C3A568F00FA04E4 /* main.m in Sources */,
-				8870F96F1C43A2840039B93C /* PKColorConversion.m in Sources */,
+				AE4066D31D30E017002273A8 /* PKColorConversion.m in Sources */,
+				AE4066D01D30E017002273A8 /* GPUImageFramebuffer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
