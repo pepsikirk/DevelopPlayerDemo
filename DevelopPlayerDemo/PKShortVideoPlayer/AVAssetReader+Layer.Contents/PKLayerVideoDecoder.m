@@ -67,6 +67,7 @@
     }
     self.initFlag = NO;
     [self preprocessForDecoding];
+    //定时器按照帧率获取
     self.timer = [NSTimer scheduledTimerWithTimeInterval:(1.0/self.frameRate) target:self selector:@selector(captureLoop) userInfo:nil repeats:YES];
     
     [self.lock unlock];
@@ -101,7 +102,19 @@
 
 #pragma mark - Private
 
--(void)captureLoop {
+- (BOOL)isRunning {
+    return [self.timer isValid]? YES : NO;
+}
+
+- (void)preprocessForDecoding {
+    [self initReader];
+}
+
+- (void)postprocessForDecoding {
+    [self releaseReader];
+}
+
+- (void)captureLoop {
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
         [self captureNext];
     });
@@ -113,18 +126,6 @@
     [self processForDecoding];
     
     [self.lock unlock];
-}
-
-- (BOOL)isRunning {
-    return [self.timer isValid]? YES : NO;
-}
-
-- (void)preprocessForDecoding {
-    [self initReader];
-}
-
-- (void)postprocessForDecoding {
-    [self releaseReader];
 }
 
 - (void)processForDecoding {

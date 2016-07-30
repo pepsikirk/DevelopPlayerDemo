@@ -30,6 +30,7 @@
     CGSize imageSize = self.image.size;
     
     self.playerView = [[PKChatMessagePlayerView alloc] initWithFrame:CGRectMake(0, 0, viewSize.width, viewSize.width* (imageSize.height/imageSize.width) ) videoPath:self.videoPath previewImage:self.image];
+    [self.playerView play];
     self.playerView.center = self.view.center;
     
     [self.view addSubview:self.playerView];
